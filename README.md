@@ -10,7 +10,8 @@ GitHub Pages can host the frontend, but it cannot safely run token refresh or AP
 2. Python refreshes the Strava access token.
 3. Python pulls recent activities.
 4. Python writes static JSON to `public/data/`.
-5. GitHub Pages serves the frontend from `public/`.
+5. Python decodes Strava route polylines into `public/data/routes.geojson`.
+6. GitHub Pages serves the frontend from `public/`.
 
 Garmin support is planned as a second source. The official Garmin Connect APIs require access through the Garmin Connect Developer Program, so this scaffold keeps provider code modular instead of baking in an unofficial login scraper.
 
@@ -56,6 +57,8 @@ python scripts/build_public_data.py
 ```
 
 Then open `public/index.html` in a browser.
+
+Route maps are generated from Strava's activity `map.summary_polyline` / `map.polyline` fields when they are available. Activities without GPS data, hidden maps, or privacy-trimmed sections may produce no route or only a shortened route.
 
 To try the frontend with sample data before connecting Strava:
 

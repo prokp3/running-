@@ -18,6 +18,7 @@ class BuildPublicDataTests(unittest.TestCase):
                 "moving_time": 1500,
                 "total_elevation_gain": 42.5,
                 "start_date_local": "2026-05-14T06:30:00Z",
+                "map": {"summary_polyline": "_p~iF~ps|U_ulLnnqC_mqNvxq`@"},
             },
             {
                 "id": 11,
@@ -39,6 +40,26 @@ class BuildPublicDataTests(unittest.TestCase):
         self.assertEqual(summary["monthly"]["2026-05"]["distance_km"], 5.0)
         self.assertEqual(summary["recent"][0]["name"], "Morning Run")
 
+    def test_build_routes_geojson_decodes_activity_polylines(self) -> None:
+        routes = build_public_data.build_routes_geojson(
+            [
+                {
+                    "id": 10,
+                    "name": "Morning Run",
+                    "sport_type": "Run",
+                    "distance": 5000,
+                    "moving_time": 1500,
+                    "start_date_local": "2026-05-14T06:30:00Z",
+                    "map": {"summary_polyline": "_p~iF~ps|U_ulLnnqC_mqNvxq`@"},
+                }
+            ]
+        )
+
+        self.assertEqual(routes["type"], "FeatureCollection")
+        self.assertEqual(len(routes["features"]), 1)
+        self.assertEqual(routes["features"][0]["geometry"]["type"], "LineString")
+        self.assertEqual(routes["features"][0]["geometry"]["coordinates"][0], [-120.2, 38.5])
+
     def test_main_writes_empty_summary_when_raw_data_is_missing(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)
@@ -47,7 +68,9 @@ class BuildPublicDataTests(unittest.TestCase):
                     build_public_data.main()
 
             output = root / "public" / "data" / "summary.json"
+            routes_output = root / "public" / "data" / "routes.geojson"
             self.assertTrue(output.exists())
+            self.assertTrue(routes_output.exists())
             payload = json.loads(output.read_text(encoding="utf-8"))
             self.assertEqual(payload["totals"]["activities"], 0)
 

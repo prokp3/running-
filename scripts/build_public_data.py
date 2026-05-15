@@ -25,6 +25,76 @@ def moving_hours(seconds: float | int | None) -> float:
     return round(float(seconds or 0) / 3600, 2)
 
 
+def decode_polyline(polyline: str) -> list[list[float]]:
+    coordinates = []
+    index = 0
+    latitude = 0
+    longitude = 0
+
+    while index < len(polyline):
+        lat_change, index = decode_polyline_value(polyline, index)
+        lng_change, index = decode_polyline_value(polyline, index)
+        latitude += lat_change
+        longitude += lng_change
+        coordinates.append([round(longitude * 1e-5, 5), round(latitude * 1e-5, 5)])
+
+    return coordinates
+
+
+def decode_polyline_value(polyline: str, index: int) -> tuple[int, int]:
+    result = 0
+    shift = 0
+
+    while True:
+        value = ord(polyline[index]) - 63
+        index += 1
+        result |= (value & 0x1F) << shift
+        shift += 5
+        if value < 0x20:
+            break
+
+    change = ~(result >> 1) if result & 1 else result >> 1
+    return change, index
+
+
+def activity_polyline(activity: dict[str, Any]) -> str | None:
+    map_data = activity.get("map") or {}
+    return map_data.get("summary_polyline") or map_data.get("polyline")
+
+
+def build_routes_geojson(activities: list[dict[str, Any]]) -> dict[str, Any]:
+    features = []
+
+    for activity in activities:
+        polyline = activity_polyline(activity)
+        if not polyline:
+            continue
+
+        coordinates = decode_polyline(polyline)
+        if len(coordinates) < 2:
+            continue
+
+        activity_type = activity.get("sport_type") or activity.get("type") or "Activity"
+        activity_id = activity.get("id")
+        features.append(
+            {
+                "type": "Feature",
+                "geometry": {"type": "LineString", "coordinates": coordinates},
+                "properties": {
+                    "id": activity_id,
+                    "name": activity.get("name", "Untitled activity"),
+                    "type": activity_type,
+                    "start": activity.get("start_date_local") or activity.get("start_date"),
+                    "distance_km": km(activity.get("distance")),
+                    "moving_hours": moving_hours(activity.get("moving_time")),
+                    "url": f"https://www.strava.com/activities/{activity_id}" if activity_id else None,
+                },
+            }
+        )
+
+    return {"type": "FeatureCollection", "features": features}
+
+
 def summarize(activities: list[dict[str, Any]]) -> dict[str, Any]:
     by_type: dict[str, dict[str, Any]] = defaultdict(
         lambda: {"count": 0, "distance_km": 0.0, "moving_hours": 0.0, "elevation_m": 0.0}
@@ -83,9 +153,13 @@ def summarize(activities: list[dict[str, Any]]) -> dict[str, Any]:
 
 def main() -> None:
     PUBLIC_DATA_DIR.mkdir(parents=True, exist_ok=True)
-    summary = summarize(load_activities())
+    activities = load_activities()
+    summary = summarize(activities)
+    routes = build_routes_geojson(activities)
     (PUBLIC_DATA_DIR / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    (PUBLIC_DATA_DIR / "routes.geojson").write_text(json.dumps(routes, indent=2), encoding="utf-8")
     print(f"Wrote {PUBLIC_DATA_DIR / 'summary.json'}")
+    print(f"Wrote {PUBLIC_DATA_DIR / 'routes.geojson'}")
 
 
 if __name__ == "__main__":
