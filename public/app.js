@@ -21,7 +21,12 @@ function renderRecent(activities) {
   container.innerHTML = "";
 
   if (!activities.length) {
-    container.innerHTML = '<p class="empty">No activities have been published yet.</p>';
+    container.innerHTML = `
+      <article class="empty">
+        <strong>No recent activities yet</strong>
+        <p>Once Strava data is imported, your latest runs and rides will show up here.</p>
+      </article>
+    `;
     return;
   }
 
@@ -61,7 +66,7 @@ async function loadRoutes() {
   const mapElement = document.getElementById("map");
   if (!window.L) {
     mapElement.classList.add("map-empty");
-    mapElement.textContent = "Map library could not be loaded.";
+    mapElement.innerHTML = "<strong>Map library could not be loaded.</strong>";
     return;
   }
 
@@ -79,7 +84,12 @@ async function loadRoutes() {
   const routes = await response.json();
   if (!routes.features || routes.features.length === 0) {
     mapElement.classList.add("map-empty");
-    mapElement.textContent = "Routes will appear here after GPS activities are imported.";
+    mapElement.innerHTML = `
+      <div>
+        <strong>No GPS routes imported yet</strong>
+        <p>Routes will appear here after the Strava refresh workflow writes route data.</p>
+      </div>
+    `;
     map.remove();
     return;
   }
@@ -100,12 +110,15 @@ async function loadStats() {
     throw new Error(`Could not load summary.json: ${response.status}`);
   }
   const data = await response.json();
+  const hasActivities = Number(data.totals.activities) > 0;
+  const updatedAt = data.source_fetched_at || data.generated_at;
 
-  setText("generated", `Updated ${new Date(data.generated_at).toLocaleString()}`);
+  setText("generated", `Strava sync: ${new Date(updatedAt).toLocaleString()} · updates every 6 hours`);
   setText("activities", formatNumber.format(data.totals.activities));
   setText("distance", formatNumber.format(data.totals.distance_km));
   setText("hours", formatNumber.format(data.totals.moving_hours));
   setText("elevation", formatNumber.format(data.totals.elevation_m));
+  document.getElementById("status").hidden = hasActivities;
   renderRecent(data.recent || []);
 }
 

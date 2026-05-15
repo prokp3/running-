@@ -50,9 +50,29 @@ h2 {
   margin: 40px 0 16px;
 }
 
+#status h2 {
+  margin: 0 0 8px;
+}
+
 #generated {
   color: var(--muted);
   margin: 0;
+}
+
+.status {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  margin: 0 0 18px;
+  padding: 18px 20px;
+}
+
+.status p,
+.empty p,
+.map-empty p {
+  color: var(--muted);
+  margin: 6px 0 0;
 }
 
 .stats {
@@ -62,7 +82,8 @@ h2 {
 }
 
 .stats article,
-.activity {
+.activity,
+.empty {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -92,10 +113,13 @@ h2 {
 }
 
 #map {
+  height: 520px;
+}
+
+.map-shell {
   background: #e8eee9;
   border: 1px solid var(--line);
   border-radius: 8px;
-  height: 520px;
   overflow: hidden;
 }
 
@@ -103,7 +127,15 @@ h2 {
   align-items: center;
   color: var(--muted);
   display: flex;
+  height: auto;
   justify-content: center;
+  min-height: 180px;
+  padding: 24px;
+  text-align: center;
+}
+
+.map-empty strong {
+  color: var(--ink);
 }
 
 .leaflet-popup-content {
@@ -124,6 +156,14 @@ h2 {
   justify-content: space-between;
   gap: 16px;
   padding: 16px 18px;
+}
+
+.empty {
+  padding: 18px;
+}
+
+.empty strong {
+  color: var(--ink);
 }
 
 .activity a {

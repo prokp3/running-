@@ -20,6 +20,16 @@
         <p id="generated">Loading latest stats...</p>
       </header>
 
+      <section id="status" class="status" hidden>
+        <div>
+          <h2>No imported activities yet</h2>
+          <p>
+            The site is ready, but the public data files are still empty. Connect Strava through the README setup,
+            then run the data workflow to publish your real activities and route map.
+          </p>
+        </div>
+      </section>
+
       <section class="stats" aria-label="Summary stats">
         <article>
           <span id="activities">-</span>
@@ -41,7 +51,7 @@
 
       <section>
         <h2>Route Map</h2>
-        <div id="map"></div>
+        <div id="map" class="map-shell"></div>
       </section>
 
       <section>

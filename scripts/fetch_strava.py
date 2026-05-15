@@ -21,6 +21,16 @@ def require_env(name: str) -> str:
     return value
 
 
+def env_int(name: str, default: int) -> int:
+    value = os.getenv(name)
+    if not value:
+        return default
+    try:
+        return int(value)
+    except ValueError as error:
+        raise SystemExit(f"{name} must be an integer.") from error
+
+
 def current_refresh_token() -> str:
     if TOKEN_FILE.exists():
         payload = json.loads(TOKEN_FILE.read_text(encoding="utf-8"))
@@ -80,7 +90,7 @@ def write_json(path: Path, payload: Any) -> None:
 
 def main() -> None:
     token = refresh_access_token()
-    activities = fetch_activities(token["access_token"])
+    activities = fetch_activities(token["access_token"], max_pages=env_int("STRAVA_MAX_PAGES", 5))
     fetched_at = datetime.now(timezone.utc).isoformat()
 
     write_json(

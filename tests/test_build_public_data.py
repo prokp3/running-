@@ -69,8 +69,10 @@ class BuildPublicDataTests(unittest.TestCase):
 
             output = root / "public" / "data" / "summary.json"
             routes_output = root / "public" / "data" / "routes.geojson"
+            status_output = root / "public" / "data" / "status.json"
             self.assertTrue(output.exists())
             self.assertTrue(routes_output.exists())
+            self.assertTrue(status_output.exists())
             payload = json.loads(output.read_text(encoding="utf-8"))
             self.assertEqual(payload["totals"]["activities"], 0)
 

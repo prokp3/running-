@@ -3,12 +3,17 @@ name: Update fitness data
 on:
   workflow_dispatch:
   schedule:
+    # Runs every 6 hours in UTC.
     - cron: "17 */6 * * *"
 
 permissions:
   contents: write
   pages: write
   id-token: write
+
+concurrency:
+  group: update-fitness-data
+  cancel-in-progress: false
 
 jobs:
   update-data:
@@ -24,6 +29,18 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Validate Strava secrets
+        env:
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+          TOKEN_STATE_PASSPHRASE: ${{ secrets.TOKEN_STATE_PASSPHRASE }}
+        run: |
+          test -n "$STRAVA_CLIENT_ID" || { echo "Missing STRAVA_CLIENT_ID"; exit 1; }
+          test -n "$STRAVA_CLIENT_SECRET" || { echo "Missing STRAVA_CLIENT_SECRET"; exit 1; }
+          test -n "$STRAVA_REFRESH_TOKEN" || { echo "Missing STRAVA_REFRESH_TOKEN"; exit 1; }
+          test -n "$TOKEN_STATE_PASSPHRASE" || { echo "Missing TOKEN_STATE_PASSPHRASE"; exit 1; }
 
       - name: Restore encrypted Strava token state
         env:
@@ -43,6 +60,7 @@ jobs:
           STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
           STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
           STRAVA_TOKEN_FILE: raw_data/strava_token.json
+          STRAVA_MAX_PAGES: "5"
         run: python scripts/fetch_strava.py
 
       - name: Build public JSON
@@ -64,7 +82,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update fitness data"
-          file_pattern: public/data/*.json .state/strava_token.json.enc
+          file_pattern: public/data/* .state/strava_token.json.enc
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

@@ -11,7 +11,8 @@ GitHub Pages can host the frontend, but it cannot safely run token refresh or AP
 3. Python pulls recent activities.
 4. Python writes static JSON to `public/data/`.
 5. Python decodes Strava route polylines into `public/data/routes.geojson`.
-6. GitHub Pages serves the frontend from `public/`.
+6. Python writes `public/data/status.json` with the latest sync metadata.
+7. GitHub Pages serves the frontend from `public/`.
 
 Garmin support is planned as a second source. The official Garmin Connect APIs require access through the Garmin Connect Developer Program, so this scaffold keeps provider code modular instead of baking in an unofficial login scraper.
 
@@ -72,10 +73,18 @@ python scripts/build_public_data.py
 
 This repo includes two workflows:
 
-- `.github/workflows/update-data.yml` refreshes Strava data every six hours, rebuilds `public/data/summary.json`, commits generated data, and deploys `public/` to GitHub Pages.
+- `.github/workflows/update-data.yml` refreshes Strava data every six hours, rebuilds `public/data/summary.json`, `public/data/routes.geojson`, and `public/data/status.json`, commits generated data, and deploys `public/` to GitHub Pages.
 - `.github/workflows/pages.yml` deploys `public/` when you push normal site changes to `main`.
 
 In your GitHub repo, go to **Settings > Pages** and choose **GitHub Actions** as the source.
+
+The schedule is:
+
+```yaml
+cron: "17 */6 * * *"
+```
+
+GitHub schedules run in UTC, so this triggers around 00:17, 06:17, 12:17, and 18:17 UTC each day. GitHub may delay scheduled jobs a little during busy periods.
 
 ## Tests
 

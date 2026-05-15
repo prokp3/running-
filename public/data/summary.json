@@ -6,6 +6,8 @@
     "moving_hours": 0,
     "elevation_m": 0
   },
+  "source": null,
+  "source_fetched_at": null,
   "by_type": {},
   "monthly": {},
   "recent": []

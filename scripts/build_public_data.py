@@ -9,12 +9,15 @@ RAW_PATH = Path("raw_data/strava_activities.json")
 PUBLIC_DATA_DIR = Path("public/data")
 
 
-def load_activities() -> list[dict[str, Any]]:
+def load_payload() -> dict[str, Any]:
     if not RAW_PATH.exists():
-        return []
+        return {}
 
-    payload = json.loads(RAW_PATH.read_text(encoding="utf-8"))
-    return payload.get("activities", [])
+    return json.loads(RAW_PATH.read_text(encoding="utf-8"))
+
+
+def load_activities() -> list[dict[str, Any]]:
+    return load_payload().get("activities", [])
 
 
 def km(meters: float | int | None) -> float:
@@ -153,13 +156,26 @@ def summarize(activities: list[dict[str, Any]]) -> dict[str, Any]:
 
 def main() -> None:
     PUBLIC_DATA_DIR.mkdir(parents=True, exist_ok=True)
-    activities = load_activities()
+    payload = load_payload()
+    activities = payload.get("activities", [])
     summary = summarize(activities)
+    summary["source"] = payload.get("source")
+    summary["source_fetched_at"] = payload.get("fetched_at")
     routes = build_routes_geojson(activities)
+    status = {
+        "source": payload.get("source"),
+        "source_fetched_at": payload.get("fetched_at"),
+        "generated_at": summary["generated_at"],
+        "activity_count": len(activities),
+        "route_count": len(routes["features"]),
+        "update_frequency": "Every 6 hours via GitHub Actions",
+    }
     (PUBLIC_DATA_DIR / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     (PUBLIC_DATA_DIR / "routes.geojson").write_text(json.dumps(routes, indent=2), encoding="utf-8")
+    (PUBLIC_DATA_DIR / "status.json").write_text(json.dumps(status, indent=2), encoding="utf-8")
     print(f"Wrote {PUBLIC_DATA_DIR / 'summary.json'}")
     print(f"Wrote {PUBLIC_DATA_DIR / 'routes.geojson'}")
+    print(f"Wrote {PUBLIC_DATA_DIR / 'status.json'}")
 
 
 if __name__ == "__main__":
