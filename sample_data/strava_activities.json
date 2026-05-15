@@ -1,0 +1,24 @@
+{
+  "source": "strava",
+  "fetched_at": "2026-05-15T00:00:00+00:00",
+  "activities": [
+    {
+      "id": 1001,
+      "name": "Easy 5K",
+      "sport_type": "Run",
+      "distance": 5000,
+      "moving_time": 1680,
+      "total_elevation_gain": 28,
+      "start_date_local": "2026-05-14T06:35:00Z"
+    },
+    {
+      "id": 1002,
+      "name": "Evening Ride",
+      "sport_type": "Ride",
+      "distance": 22150,
+      "moving_time": 4020,
+      "total_elevation_gain": 185,
+      "start_date_local": "2026-05-12T18:10:00Z"
+    }
+  ]
+}

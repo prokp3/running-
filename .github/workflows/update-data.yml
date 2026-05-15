@@ -1,0 +1,78 @@
+name: Update fitness data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Restore encrypted Strava token state
+        env:
+          TOKEN_STATE_PASSPHRASE: ${{ secrets.TOKEN_STATE_PASSPHRASE }}
+        run: |
+          mkdir -p raw_data
+          if [ -f .state/strava_token.json.enc ] && [ -n "$TOKEN_STATE_PASSPHRASE" ]; then
+            openssl enc -aes-256-cbc -d -salt -pbkdf2 \
+              -in .state/strava_token.json.enc \
+              -out raw_data/strava_token.json \
+              -pass env:TOKEN_STATE_PASSPHRASE
+          fi
+
+      - name: Fetch Strava activities
+        env:
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+          STRAVA_TOKEN_FILE: raw_data/strava_token.json
+        run: python scripts/fetch_strava.py
+
+      - name: Build public JSON
+        run: python scripts/build_public_data.py
+
+      - name: Save encrypted Strava token state
+        env:
+          TOKEN_STATE_PASSPHRASE: ${{ secrets.TOKEN_STATE_PASSPHRASE }}
+        run: |
+          if [ -n "$TOKEN_STATE_PASSPHRASE" ]; then
+            mkdir -p .state
+            openssl enc -aes-256-cbc -salt -pbkdf2 \
+              -in raw_data/strava_token.json \
+              -out .state/strava_token.json.enc \
+              -pass env:TOKEN_STATE_PASSPHRASE
+          fi
+
+      - name: Commit generated data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update fitness data"
+          file_pattern: public/data/*.json .state/strava_token.json.enc
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

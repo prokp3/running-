@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fitness Stats</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">Garmin / Strava dashboard</p>
+        <h1>Fitness Stats</h1>
+        <p id="generated">Loading latest stats...</p>
+      </header>
+
+      <section class="stats" aria-label="Summary stats">
+        <article>
+          <span id="activities">-</span>
+          <p>Activities</p>
+        </article>
+        <article>
+          <span id="distance">-</span>
+          <p>Kilometers</p>
+        </article>
+        <article>
+          <span id="hours">-</span>
+          <p>Moving hours</p>
+        </article>
+        <article>
+          <span id="elevation">-</span>
+          <p>Elevation meters</p>
+        </article>
+      </section>
+
+      <section>
+        <h2>Recent Activities</h2>
+        <div id="recent" class="activity-list"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
