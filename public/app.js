@@ -242,14 +242,23 @@ function renderMap(routes, mapCenter) {
     [initialCenter.latitude, initialCenter.longitude],
     12
   );
-  activeTileLayer = createTileLayer(document.documentElement.dataset.theme || "light").addTo(activeMap);
+  const map = activeMap;
+  activeTileLayer = createTileLayer(document.documentElement.dataset.theme || "light").addTo(map);
 
   L.geoJSON(routes, {
     style: routeStyle,
     onEachFeature(feature, layer) {
       layer.bindPopup(popupContent(feature));
     },
-  }).addTo(activeMap);
+  }).addTo(map);
+
+  setTimeout(() => {
+    map.invalidateSize();
+  }, 300);
+
+  window.addEventListener("resize", () => {
+    map.invalidateSize();
+  });
 }
 
 async function loadDashboard() {
