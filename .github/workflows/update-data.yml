@@ -66,6 +66,9 @@ jobs:
       - name: Build public JSON
         run: python scripts/build_public_data.py
 
+      - name: Validate public JSON
+        run: python scripts/validate_public_data.py
+
       - name: Save encrypted Strava token state
         env:
           TOKEN_STATE_PASSPHRASE: ${{ secrets.TOKEN_STATE_PASSPHRASE }}

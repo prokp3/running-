@@ -88,6 +88,8 @@ cron: "17 */6 * * *"
 
 GitHub schedules run in UTC, so this triggers around 00:17, 06:17, 12:17, and 18:17 UTC each day. GitHub may delay scheduled jobs a little during busy periods.
 
+If the page still shows an empty summary after secrets are configured, open **Actions > Update fitness data > Run workflow**. The workflow now validates that `summary.json`, `routes.geojson`, and `status.json` agree before deploying.
+
 ## Tests
 
 ```powershell

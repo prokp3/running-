@@ -53,8 +53,31 @@ function setText(id, value) {
   document.getElementById(id).textContent = value;
 }
 
+function isRunType(type) {
+  return type && type.toLowerCase().includes("run");
+}
+
+function dietCokeCansForKm(distanceKm) {
+  return Math.round((distanceKm * 1000) / 0.122);
+}
+
 function activityUrl(activity) {
   return activity.url || "#";
+}
+
+function showStatus(title, message) {
+  const status = document.getElementById("status");
+  status.hidden = false;
+  status.innerHTML = `
+    <div>
+      <h2>${title}</h2>
+      <p>${message}</p>
+    </div>
+  `;
+}
+
+function hideStatus() {
+  document.getElementById("status").hidden = true;
 }
 
 function renderRecent(activities) {
@@ -87,7 +110,7 @@ function renderRecent(activities) {
 
 function routeStyle(feature) {
   return {
-    color: routeColors[feature.properties.type] || "var(--ink)",
+    color: routeColors[feature.properties.type] || "#48c79f",
     opacity: 0.78,
     weight: 4,
   };
@@ -103,60 +126,72 @@ function popupContent(feature) {
   return `<strong>${name}</strong><br>${label}`;
 }
 
-async function loadRoutes(mapCenter) {
-  const mapElement = document.getElementById("map");
-  if (!window.L) {
-    mapElement.classList.add("map-empty");
-    mapElement.innerHTML = "<strong>Map library could not be loaded.</strong>";
-    return;
+function concentratedRouteCenter(routes) {
+  const features = routes.features || [];
+  let points = features
+    .filter((feature) => isRunType(feature.properties.type))
+    .flatMap((feature) => feature.geometry.coordinates || []);
+
+  if (!points.length) {
+    points = features.flatMap((feature) => feature.geometry.coordinates || []);
   }
 
-  const initialCenter = mapCenter ? [mapCenter.latitude, mapCenter.longitude] : [20, 0];
-  activeMap = L.map("map", { scrollWheelZoom: false }).setView(initialCenter, mapCenter ? 12 : 2);
-  activeTileLayer = createTileLayer(document.documentElement.dataset.theme || "light").addTo(activeMap);
-
-  const response = await fetch("data/routes.geojson", { cache: "no-store" });
-  if (!response.ok) {
-    throw new Error(`Could not load routes.geojson: ${response.status}`);
+  if (!points.length) {
+    return null;
   }
 
-  const routes = await response.json();
-  if (!routes.features || routes.features.length === 0) {
-    mapElement.classList.add("map-empty");
-    mapElement.innerHTML = `
-      <div>
-        <strong>No GPS routes imported yet</strong>
-        <p>Routes will appear here after the Strava refresh workflow writes route data.</p>
-      </div>
-    `;
-    activeMap.remove();
-    activeMap = undefined;
-    activeTileLayer = undefined;
-    return;
+  const buckets = new Map();
+  for (const [longitude, latitude] of points) {
+    const key = `${latitude.toFixed(2)},${longitude.toFixed(2)}`;
+    const bucket = buckets.get(key) || [];
+    bucket.push([longitude, latitude]);
+    buckets.set(key, bucket);
   }
 
-  const routeLayer = L.geoJSON(routes, {
-    style: routeStyle,
-    onEachFeature(feature, layer) {
-      layer.bindPopup(popupContent(feature));
-    },
-  }).addTo(activeMap);
-
-  if (mapCenter) {
-    activeMap.setView([mapCenter.latitude, mapCenter.longitude], 12);
-  } else {
-    activeMap.fitBounds(routeLayer.getBounds(), { padding: [24, 24] });
-  }
+  const densest = [...buckets.values()].sort((a, b) => b.length - a.length)[0];
+  const longitude = densest.reduce((sum, point) => sum + point[0], 0) / densest.length;
+  const latitude = densest.reduce((sum, point) => sum + point[1], 0) / densest.length;
+  return { latitude, longitude };
 }
 
-async function loadStats() {
-  const response = await fetch("data/summary.json", { cache: "no-store" });
+function fallbackFromRoutes(summary, status, routes) {
+  const features = routes.features || [];
+  const routeActivities = features
+    .map((feature) => feature.properties)
+    .sort((a, b) => String(b.start || "").localeCompare(String(a.start || "")));
+  const routeDistance = routeActivities.reduce((sum, activity) => sum + Number(activity.distance_km || 0), 0);
+  const routeHours = routeActivities.reduce((sum, activity) => sum + Number(activity.moving_hours || 0), 0);
+  const runDistance = routeActivities
+    .filter((activity) => isRunType(activity.type))
+    .reduce((sum, activity) => sum + Number(activity.distance_km || 0), 0);
+
+  return {
+    ...summary,
+    totals: {
+      activities: status.activity_count || features.length,
+      distance_km: routeDistance,
+      run_distance_km: runDistance,
+      diet_coke_cans: dietCokeCansForKm(runDistance),
+      moving_hours: routeHours,
+      elevation_m: summary.totals.elevation_m || 0,
+    },
+    map_center: summary.map_center || concentratedRouteCenter(routes),
+    recent: routeActivities.slice(0, 20),
+    using_route_fallback: true,
+  };
+}
+
+async function loadJson(path) {
+  const response = await fetch(path, { cache: "no-store" });
   if (!response.ok) {
-    throw new Error(`Could not load summary.json: ${response.status}`);
+    throw new Error(`Could not load ${path}: ${response.status}`);
   }
-  const data = await response.json();
+  return response.json();
+}
+
+function renderStats(data, status) {
   const hasActivities = Number(data.totals.activities) > 0;
-  const updatedAt = data.source_fetched_at || data.generated_at;
+  const updatedAt = data.source_fetched_at || status.source_fetched_at || data.generated_at;
 
   setText("generated", `Strava sync: ${new Date(updatedAt).toLocaleString()} · updates every 6 hours`);
   setText("activities", formatNumber.format(data.totals.activities));
@@ -164,9 +199,71 @@ async function loadStats() {
   setText("hours", formatNumber.format(data.totals.moving_hours));
   setText("elevation", formatNumber.format(data.totals.elevation_m));
   setText("diet-coke", formatWholeNumber.format(data.totals.diet_coke_cans || 0));
-  document.getElementById("status").hidden = hasActivities;
+
+  if (data.using_route_fallback) {
+    showStatus(
+      "Strava routes are imported, summary needs rebuild",
+      "I found route data from Strava, but summary.json is still empty. The page is showing route-derived stats for now; rerun the Update fitness data workflow to rebuild the full summary."
+    );
+  } else if (hasActivities) {
+    hideStatus();
+  } else {
+    showStatus(
+      "No imported activities yet",
+      "The site is ready, but the public data files are still empty. Run the Update fitness data workflow to publish your real activities and route map."
+    );
+  }
+
   renderRecent(data.recent || []);
-  return data;
+}
+
+function renderMap(routes, mapCenter) {
+  const mapElement = document.getElementById("map");
+  if (!window.L) {
+    mapElement.classList.add("map-empty");
+    mapElement.innerHTML = "<strong>Map library could not be loaded.</strong>";
+    return;
+  }
+
+  const features = routes.features || [];
+  if (!features.length) {
+    mapElement.classList.add("map-empty");
+    mapElement.innerHTML = `
+      <div>
+        <strong>No GPS routes imported yet</strong>
+        <p>Routes will appear here after the Strava refresh workflow writes route data.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const initialCenter = mapCenter || concentratedRouteCenter(routes);
+  activeMap = L.map("map", { scrollWheelZoom: false }).setView(
+    [initialCenter.latitude, initialCenter.longitude],
+    12
+  );
+  activeTileLayer = createTileLayer(document.documentElement.dataset.theme || "light").addTo(activeMap);
+
+  L.geoJSON(routes, {
+    style: routeStyle,
+    onEachFeature(feature, layer) {
+      layer.bindPopup(popupContent(feature));
+    },
+  }).addTo(activeMap);
+}
+
+async function loadDashboard() {
+  const [summary, status, routes] = await Promise.all([
+    loadJson("data/summary.json"),
+    loadJson("data/status.json"),
+    loadJson("data/routes.geojson"),
+  ]);
+  const summaryIsEmpty = Number(summary.totals.activities) === 0;
+  const hasImportedRoutes = routes.features && routes.features.length > 0;
+  const data = summaryIsEmpty && hasImportedRoutes ? fallbackFromRoutes(summary, status, routes) : summary;
+
+  renderStats(data, status);
+  renderMap(routes, data.map_center);
 }
 
 applyTheme(preferredTheme());
@@ -175,8 +272,6 @@ themeButton.addEventListener("click", () => {
   applyTheme(nextTheme);
 });
 
-loadStats()
-  .then((data) => loadRoutes(data.map_center))
-  .catch((error) => {
-    setText("generated", error.message);
-  });
+loadDashboard().catch((error) => {
+  setText("generated", error.message);
+});
