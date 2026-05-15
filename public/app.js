@@ -4,6 +4,7 @@ const themeButton = document.getElementById("theme-toggle");
 const themeIcon = document.getElementById("theme-icon");
 let activeMap;
 let activeTileLayer;
+let mapResizeObserver;
 
 const routeColors = {
   Run: "#d9462f",
@@ -47,6 +48,20 @@ function createTileLayer(theme) {
         : '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     maxZoom: 19,
   });
+}
+
+function invalidateMapSize(map) {
+  requestAnimationFrame(() => {
+    map.invalidateSize();
+  });
+
+  setTimeout(() => {
+    map.invalidateSize();
+  }, 300);
+
+  setTimeout(() => {
+    map.invalidateSize();
+  }, 1000);
 }
 
 function setText(id, value) {
@@ -238,12 +253,23 @@ function renderMap(routes, mapCenter) {
   }
 
   const initialCenter = mapCenter || concentratedRouteCenter(routes);
-  activeMap = L.map("map", { scrollWheelZoom: false }).setView(
+  if (mapResizeObserver) {
+    mapResizeObserver.disconnect();
+  }
+
+  activeMap = L.map("map", {
+    scrollWheelZoom: true,
+    touchZoom: true,
+    trackResize: true,
+  }).setView(
     [initialCenter.latitude, initialCenter.longitude],
     12
   );
   const map = activeMap;
   activeTileLayer = createTileLayer(document.documentElement.dataset.theme || "light").addTo(map);
+  activeTileLayer.on("load", () => {
+    invalidateMapSize(map);
+  });
 
   L.geoJSON(routes, {
     style: routeStyle,
@@ -252,13 +278,18 @@ function renderMap(routes, mapCenter) {
     },
   }).addTo(map);
 
-  setTimeout(() => {
-    map.invalidateSize();
-  }, 300);
+  invalidateMapSize(map);
 
   window.addEventListener("resize", () => {
     map.invalidateSize();
   });
+
+  if ("ResizeObserver" in window) {
+    mapResizeObserver = new ResizeObserver(() => {
+      map.invalidateSize();
+    });
+    mapResizeObserver.observe(mapElement);
+  }
 }
 
 async function loadDashboard() {
