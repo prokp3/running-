@@ -15,9 +15,16 @@
   <body>
     <main>
       <header>
-        <p class="eyebrow">Garmin / Strava dashboard</p>
-        <h1>Fitness Stats</h1>
-        <p id="generated">Loading latest stats...</p>
+        <div class="topbar">
+          <p class="eyebrow">Garmin / Strava dashboard</p>
+          <button id="theme-toggle" class="icon-button" type="button" aria-label="Switch to dark mode" title="Switch theme">
+            <span id="theme-icon">Moon</span>
+          </button>
+        </div>
+        <div>
+          <h1>Fitness Stats</h1>
+          <p id="generated">Loading latest stats...</p>
+        </div>
       </header>
 
       <section id="status" class="status" hidden>
@@ -46,6 +53,10 @@
         <article>
           <span id="elevation">-</span>
           <p>Elevation meters</p>
+        </article>
+        <article>
+          <span id="diet-coke">-</span>
+          <p>Diet Coke cans run</p>
         </article>
       </section>
 

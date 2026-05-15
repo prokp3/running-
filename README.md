@@ -61,6 +61,8 @@ Then open `public/index.html` in a browser.
 
 Route maps are generated from Strava's activity `map.summary_polyline` / `map.polyline` fields when they are available. Activities without GPS data, hidden maps, or privacy-trimmed sections may produce no route or only a shortened route.
 
+The map opens around the densest cluster of your running route points when route data is available. The stats also include a Diet Coke can equivalent for run distance, using a 122 mm can height.
+
 To try the frontend with sample data before connecting Strava:
 
 ```powershell

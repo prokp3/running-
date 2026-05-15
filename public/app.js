@@ -1,4 +1,10 @@
 const formatNumber = new Intl.NumberFormat("en", { maximumFractionDigits: 1 });
+const formatWholeNumber = new Intl.NumberFormat("en", { maximumFractionDigits: 0 });
+const themeButton = document.getElementById("theme-toggle");
+const themeIcon = document.getElementById("theme-icon");
+let activeMap;
+let activeTileLayer;
+
 const routeColors = {
   Run: "#d9462f",
   TrailRun: "#b72818",
@@ -7,6 +13,41 @@ const routeColors = {
   Walk: "#0f7b63",
   Hike: "#76512f",
 };
+
+const tileUrls = {
+  light: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  dark: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+};
+
+function preferredTheme() {
+  const saved = localStorage.getItem("theme");
+  if (saved) {
+    return saved;
+  }
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem("theme", theme);
+  themeIcon.textContent = theme === "dark" ? "Sun" : "Moon";
+  themeButton.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+
+  if (activeMap && activeTileLayer) {
+    activeMap.removeLayer(activeTileLayer);
+    activeTileLayer = createTileLayer(theme).addTo(activeMap);
+  }
+}
+
+function createTileLayer(theme) {
+  return L.tileLayer(tileUrls[theme], {
+    attribution:
+      theme === "dark"
+        ? '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        : '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 19,
+  });
+}
 
 function setText(id, value) {
   document.getElementById(id).textContent = value;
@@ -46,8 +87,8 @@ function renderRecent(activities) {
 
 function routeStyle(feature) {
   return {
-    color: routeColors[feature.properties.type] || "#172019",
-    opacity: 0.72,
+    color: routeColors[feature.properties.type] || "var(--ink)",
+    opacity: 0.78,
     weight: 4,
   };
 }
@@ -62,7 +103,7 @@ function popupContent(feature) {
   return `<strong>${name}</strong><br>${label}`;
 }
 
-async function loadRoutes() {
+async function loadRoutes(mapCenter) {
   const mapElement = document.getElementById("map");
   if (!window.L) {
     mapElement.classList.add("map-empty");
@@ -70,11 +111,9 @@ async function loadRoutes() {
     return;
   }
 
-  const map = L.map("map", { scrollWheelZoom: false }).setView([20, 0], 2);
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    maxZoom: 19,
-  }).addTo(map);
+  const initialCenter = mapCenter ? [mapCenter.latitude, mapCenter.longitude] : [20, 0];
+  activeMap = L.map("map", { scrollWheelZoom: false }).setView(initialCenter, mapCenter ? 12 : 2);
+  activeTileLayer = createTileLayer(document.documentElement.dataset.theme || "light").addTo(activeMap);
 
   const response = await fetch("data/routes.geojson", { cache: "no-store" });
   if (!response.ok) {
@@ -90,7 +129,9 @@ async function loadRoutes() {
         <p>Routes will appear here after the Strava refresh workflow writes route data.</p>
       </div>
     `;
-    map.remove();
+    activeMap.remove();
+    activeMap = undefined;
+    activeTileLayer = undefined;
     return;
   }
 
@@ -99,9 +140,13 @@ async function loadRoutes() {
     onEachFeature(feature, layer) {
       layer.bindPopup(popupContent(feature));
     },
-  }).addTo(map);
+  }).addTo(activeMap);
 
-  map.fitBounds(routeLayer.getBounds(), { padding: [24, 24] });
+  if (mapCenter) {
+    activeMap.setView([mapCenter.latitude, mapCenter.longitude], 12);
+  } else {
+    activeMap.fitBounds(routeLayer.getBounds(), { padding: [24, 24] });
+  }
 }
 
 async function loadStats() {
@@ -118,10 +163,20 @@ async function loadStats() {
   setText("distance", formatNumber.format(data.totals.distance_km));
   setText("hours", formatNumber.format(data.totals.moving_hours));
   setText("elevation", formatNumber.format(data.totals.elevation_m));
+  setText("diet-coke", formatWholeNumber.format(data.totals.diet_coke_cans || 0));
   document.getElementById("status").hidden = hasActivities;
   renderRecent(data.recent || []);
+  return data;
 }
 
-Promise.all([loadStats(), loadRoutes()]).catch((error) => {
-  setText("generated", error.message);
+applyTheme(preferredTheme());
+themeButton.addEventListener("click", () => {
+  const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  applyTheme(nextTheme);
 });
+
+loadStats()
+  .then((data) => loadRoutes(data.map_center))
+  .catch((error) => {
+    setText("generated", error.message);
+  });

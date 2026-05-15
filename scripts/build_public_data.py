@@ -7,6 +7,8 @@ from typing import Any
 
 RAW_PATH = Path("raw_data/strava_activities.json")
 PUBLIC_DATA_DIR = Path("public/data")
+DIET_COKE_CAN_HEIGHT_M = 0.122
+RUN_TYPES = {"Run", "TrailRun", "VirtualRun"}
 
 
 def load_payload() -> dict[str, Any]:
@@ -26,6 +28,14 @@ def km(meters: float | int | None) -> float:
 
 def moving_hours(seconds: float | int | None) -> float:
     return round(float(seconds or 0) / 3600, 2)
+
+
+def is_run(activity_type: str) -> bool:
+    return activity_type in RUN_TYPES or "run" in activity_type.lower()
+
+
+def diet_coke_cans_for_km(distance_km: float) -> int:
+    return round((distance_km * 1000) / DIET_COKE_CAN_HEIGHT_M)
 
 
 def decode_polyline(polyline: str) -> list[list[float]]:
@@ -98,6 +108,30 @@ def build_routes_geojson(activities: list[dict[str, Any]]) -> dict[str, Any]:
     return {"type": "FeatureCollection", "features": features}
 
 
+def concentrated_route_center(routes: dict[str, Any]) -> dict[str, float] | None:
+    points: list[list[float]] = []
+    for feature in routes.get("features", []):
+        if feature.get("properties", {}).get("type") and not is_run(feature["properties"]["type"]):
+            continue
+        points.extend(feature.get("geometry", {}).get("coordinates", []))
+
+    if not points:
+        for feature in routes.get("features", []):
+            points.extend(feature.get("geometry", {}).get("coordinates", []))
+
+    if not points:
+        return None
+
+    buckets: dict[tuple[float, float], list[list[float]]] = defaultdict(list)
+    for longitude, latitude in points:
+        buckets[(round(latitude, 2), round(longitude, 2))].append([longitude, latitude])
+
+    densest_points = max(buckets.values(), key=len)
+    longitude = round(sum(point[0] for point in densest_points) / len(densest_points), 5)
+    latitude = round(sum(point[1] for point in densest_points) / len(densest_points), 5)
+    return {"latitude": latitude, "longitude": longitude}
+
+
 def summarize(activities: list[dict[str, Any]]) -> dict[str, Any]:
     by_type: dict[str, dict[str, Any]] = defaultdict(
         lambda: {"count": 0, "distance_km": 0.0, "moving_hours": 0.0, "elevation_m": 0.0}
@@ -106,6 +140,7 @@ def summarize(activities: list[dict[str, Any]]) -> dict[str, Any]:
         lambda: {"count": 0, "distance_km": 0.0, "moving_hours": 0.0}
     )
     recent = []
+    run_distance_km = 0.0
 
     for activity in activities:
         activity_type = activity.get("sport_type") or activity.get("type") or "Activity"
@@ -119,6 +154,8 @@ def summarize(activities: list[dict[str, Any]]) -> dict[str, Any]:
         by_type[activity_type]["distance_km"] += distance_km
         by_type[activity_type]["moving_hours"] += hours
         by_type[activity_type]["elevation_m"] += elevation
+        if is_run(activity_type):
+            run_distance_km += distance_km
 
         monthly[month]["count"] += 1
         monthly[month]["distance_km"] += distance_km
@@ -139,12 +176,15 @@ def summarize(activities: list[dict[str, Any]]) -> dict[str, Any]:
     total_distance = round(sum(item["distance_km"] for item in by_type.values()), 2)
     total_hours = round(sum(item["moving_hours"] for item in by_type.values()), 2)
     total_elevation = round(sum(item["elevation_m"] for item in by_type.values()), 1)
+    run_distance_km = round(run_distance_km, 2)
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "totals": {
             "activities": len(activities),
             "distance_km": total_distance,
+            "run_distance_km": run_distance_km,
+            "diet_coke_cans": diet_coke_cans_for_km(run_distance_km),
             "moving_hours": total_hours,
             "elevation_m": total_elevation,
         },
@@ -162,6 +202,7 @@ def main() -> None:
     summary["source"] = payload.get("source")
     summary["source_fetched_at"] = payload.get("fetched_at")
     routes = build_routes_geojson(activities)
+    summary["map_center"] = concentrated_route_center(routes)
     status = {
         "source": payload.get("source"),
         "source_fetched_at": payload.get("fetched_at"),
