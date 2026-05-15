@@ -86,6 +86,7 @@ jobs:
         with:
           commit_message: "Update fitness data"
           file_pattern: public/data/* .state/strava_token.json.enc
+          push_options: --force-with-lease
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
