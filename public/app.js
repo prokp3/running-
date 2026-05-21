@@ -202,11 +202,13 @@ function renderActivities() {
           <small>${formatPace(paceMinutesPerKm(activity))}</small>
         </span>
       </button>
-      <div class="activity-detail" hidden>
+      <div class="activity-detail" id="activity-detail-${activityKey}" hidden>
         ${renderRouteMap(activity, activityKey)}
         ${renderRunCharts(activity)}
-        <button class="details-toggle" type="button" aria-expanded="false">Show all details</button>
-        <dl class="detail-grid" hidden>
+        <button class="details-toggle" type="button" aria-expanded="false" aria-controls="detail-grid-${activityKey}">
+          Show all details
+        </button>
+        <dl class="detail-grid" id="detail-grid-${activityKey}" hidden>
           ${detailRows(activity)
             .map(([key, value]) => `<div><dt>${key}</dt><dd>${value}</dd></div>`)
             .join("")}
@@ -221,6 +223,7 @@ function renderActivities() {
     summary.addEventListener("click", () => {
       const isOpen = !detail.hidden;
       detail.hidden = isOpen;
+      detail.classList.toggle("is-visible", !isOpen);
       summary.setAttribute("aria-expanded", String(!isOpen));
       item.classList.toggle("is-open", !isOpen);
       if (!isOpen) {
@@ -230,6 +233,7 @@ function renderActivities() {
     detailsToggle.addEventListener("click", () => {
       const isOpen = !detailGrid.hidden;
       detailGrid.hidden = isOpen;
+      detailGrid.classList.toggle("is-visible", !isOpen);
       detailsToggle.textContent = isOpen ? "Show all details" : "Hide details";
       detailsToggle.setAttribute("aria-expanded", String(!isOpen));
     });
