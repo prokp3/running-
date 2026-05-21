@@ -1,10 +1,10 @@
-# Fitness Stats Website
+# RUUNNNNNNN
 
-Python-first pipeline for pulling activity data from Strava, shaping it into static JSON, and publishing a lightweight website on GitHub Pages.
+Python-first pipeline for pulling activity data from Strava, shaping it into static JSON, and publishing a lightweight running dashboard.
 
 ## Architecture
 
-GitHub Pages can host the frontend, but it cannot safely run token refresh or API calls with secrets. This project keeps secrets in GitHub Actions and publishes only generated public JSON:
+GitHub Pages can host the fitness dashboard frontend, but it cannot safely run token refresh or API calls with secrets. This project keeps Strava secrets in GitHub Actions and publishes only generated public JSON:
 
 1. GitHub Actions runs on a schedule.
 2. Python refreshes the Strava access token.
@@ -108,6 +108,67 @@ Add these repository secrets before enabling the workflow:
 `TOKEN_STATE_PASSPHRASE` is used to encrypt the latest Strava refresh token into `.state/strava_token.json.enc`. That keeps the scheduled workflow working even if Strava rotates the refresh token, without publishing the token itself.
 
 Generate a strong passphrase locally and save it only as a GitHub secret.
+
+## Login And Signup
+
+The login/signup system uses static frontend pages plus serverless API routes:
+
+- `public/login.html`
+- `public/signup.html`
+- `public/auth.js`
+- `api/signup.js`
+- `api/login.js`
+- `api/_usersStore.js`
+
+The API routes create or update an Excel workbook named `users.xlsx` in a GitHub repository. Each row contains:
+
+- `username`
+- `email`
+- `password` - stored as a PBKDF2 hash, not plaintext
+- `signup date/time`
+
+Install the Node dependency used for Excel handling:
+
+```powershell
+npm install
+```
+
+Required deployment environment variables:
+
+- `GITHUB_TOKEN` - a fine-grained GitHub Personal Access Token with Contents read/write access to the target repo
+- `GITHUB_OWNER` - repo owner or org
+- `GITHUB_REPO` - repo name where `users.xlsx` should live
+- `GITHUB_BRANCH` - branch to write to, defaults to `main`
+- `USERS_XLSX_PATH` - workbook path, defaults to `users.xlsx`
+- `AUTH_SESSION_SECRET` - long random secret used to sign localStorage session tokens
+
+Local development example:
+
+```powershell
+$env:GITHUB_TOKEN="github_pat_..."
+$env:GITHUB_OWNER="your-user"
+$env:GITHUB_REPO="your-repo"
+$env:GITHUB_BRANCH="main"
+$env:USERS_XLSX_PATH="users.xlsx"
+$env:AUTH_SESSION_SECRET="generate-a-long-random-string"
+npm install
+npx vercel dev
+```
+
+Deploy with Vercel:
+
+1. Push the repo to GitHub.
+2. Import the project in Vercel.
+3. Set the environment variables above in Vercel project settings.
+4. Deploy.
+
+GitHub Pages cannot run the `/api/signup` and `/api/login` serverless functions. If you deploy only to GitHub Pages, the fitness dashboard will work, but login/signup will not be able to write `users.xlsx`.
+
+Security limitations:
+
+- A frontend-only app cannot keep a GitHub token secret. Any token shipped to browser JavaScript can be stolen.
+- This implementation keeps the token in serverless environment variables and never sends it to the browser.
+- localStorage sessions are convenient but weaker than secure HTTP-only cookies. A future production version should move sessions to HTTP-only cookies, add rate limiting, add email verification, and avoid using Excel as the primary user database.
 
 ## Useful Official Docs
 

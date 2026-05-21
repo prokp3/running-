@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Log in - RUUNNNNNNN</title>
+    <link rel="stylesheet" href="styles.css?v=5" />
+  </head>
+  <body>
+    <main class="auth-page">
+      <a class="auth-home" href="index.html">RUUNNNNNNN</a>
+      <section class="auth-card">
+        <p class="eyebrow">Welcome back</p>
+        <h1>Log in</h1>
+        <p class="auth-copy">Use your username or email to continue.</p>
+        <p id="auth-message" class="auth-message" hidden></p>
+        <form id="login-form" class="auth-form">
+          <label>
+            <span>Username or email</span>
+            <input name="identifier" autocomplete="username" required />
+          </label>
+          <label>
+            <span>Password</span>
+            <input name="password" type="password" autocomplete="current-password" required />
+          </label>
+          <button type="submit">Log in</button>
+        </form>
+        <p class="auth-switch">No account yet? <a href="signup.html">Sign up</a></p>
+      </section>
+    </main>
+    <script src="auth.js?v=1"></script>
+  </body>
+</html>

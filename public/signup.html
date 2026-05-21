@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign up - RUUNNNNNNN</title>
+    <link rel="stylesheet" href="styles.css?v=5" />
+  </head>
+  <body>
+    <main class="auth-page">
+      <a class="auth-home" href="index.html">RUUNNNNNNN</a>
+      <section class="auth-card">
+        <p class="eyebrow">Start running</p>
+        <h1>Create account</h1>
+        <p class="auth-copy">Your account will be written to the private Excel user store.</p>
+        <p id="auth-message" class="auth-message" hidden></p>
+        <form id="signup-form" class="auth-form">
+          <label>
+            <span>Username</span>
+            <input name="username" autocomplete="username" minlength="3" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+          <label>
+            <span>Password</span>
+            <input name="password" type="password" autocomplete="new-password" minlength="8" required />
+          </label>
+          <label>
+            <span>Confirm password</span>
+            <input name="confirmPassword" type="password" autocomplete="new-password" minlength="8" required />
+          </label>
+          <button type="submit">Sign up</button>
+        </form>
+        <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+      </section>
+    </main>
+    <script src="auth.js?v=1"></script>
+  </body>
+</html>

@@ -3,6 +3,8 @@ const formatWholeNumber = new Intl.NumberFormat("en", { maximumFractionDigits: 0
 const themeButton = document.getElementById("theme-toggle");
 const themeIcon = document.getElementById("theme-icon");
 const filterButtons = document.querySelectorAll("[data-filter]");
+const authLink = document.querySelector("[data-auth-link]");
+const logoutButton = document.getElementById("logout-button");
 
 let dashboardData = null;
 let currentFilter = "recent";
@@ -21,6 +23,16 @@ function applyTheme(theme) {
   localStorage.setItem("theme", theme);
   themeIcon.textContent = theme === "dark" ? "Light" : "Dark";
   themeButton.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+}
+
+function syncAuthNav() {
+  const session = localStorage.getItem("ruunnnnnnn_session");
+  if (authLink) {
+    authLink.hidden = Boolean(session);
+  }
+  if (logoutButton) {
+    logoutButton.hidden = !session;
+  }
 }
 
 function setText(id, value) {
@@ -271,12 +283,32 @@ function initializeRouteMap(activity, activityKey) {
 
   const latLngs = coordinates.map(([longitude, latitude]) => [latitude, longitude]);
   const map = L.map(element, {
-    scrollWheelZoom: false,
-    zoomControl: false,
+    boxZoom: true,
+    doubleClickZoom: true,
+    scrollWheelZoom: true,
+    tap: true,
+    touchZoom: true,
+    wheelDebounceTime: 24,
+    wheelPxPerZoomLevel: 80,
+    zoomControl: true,
   });
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  const tileLayer = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    crossOrigin: true,
+    detectRetina: true,
     maxZoom: 19,
   }).addTo(map);
+  tileLayer.on("tileerror", () => {
+    if (element.dataset.fallbackTiles === "true") {
+      return;
+    }
+    element.dataset.fallbackTiles = "true";
+    map.removeLayer(tileLayer);
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+      attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a> &copy; OpenStreetMap',
+      maxZoom: 20,
+    }).addTo(map);
+  });
   const route = L.polyline(latLngs, {
     color: "#ff2e63",
     opacity: 0.92,
@@ -287,6 +319,7 @@ function initializeRouteMap(activity, activityKey) {
   map.fitBounds(route.getBounds(), { padding: [24, 24] });
   routeMaps.set(activityKey, map);
   setTimeout(() => map.invalidateSize(), 120);
+  setTimeout(() => map.invalidateSize(), 500);
 }
 
 function renderRunCharts(activity) {
@@ -514,9 +547,14 @@ async function loadDashboard() {
 }
 
 applyTheme(preferredTheme());
+syncAuthNav();
 themeButton.addEventListener("click", () => {
   const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
   applyTheme(nextTheme);
+});
+logoutButton?.addEventListener("click", () => {
+  localStorage.removeItem("ruunnnnnnn_session");
+  syncAuthNav();
 });
 
 filterButtons.forEach((button) => {
