@@ -17,6 +17,7 @@ class BuildPublicDataTests(unittest.TestCase):
                 "distance": 5000,
                 "moving_time": 1500,
                 "total_elevation_gain": 42.5,
+                "location_country": "India",
                 "start_date_local": "2026-05-14T06:30:00Z",
                 "map": {"summary_polyline": "_p~iF~ps|U_ulLnnqC_mqNvxq`@"},
             },
@@ -49,6 +50,8 @@ class BuildPublicDataTests(unittest.TestCase):
         self.assertEqual(summary["by_type"]["Run"]["count"], 1)
         self.assertNotIn("WeightTraining", summary["by_type"])
         self.assertEqual(summary["monthly"]["2026-05"]["distance_km"], 5.0)
+        self.assertEqual(summary["countries"]["India"]["count"], 1)
+        self.assertNotIn("Unknown", summary["countries"])
         self.assertEqual(summary["recent"][0]["name"], "Morning Run")
         self.assertEqual(len(summary["activities"]), 2)
 

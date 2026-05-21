@@ -175,9 +175,10 @@ def summarize(activities: list[dict[str, Any]]) -> dict[str, Any]:
         by_type[activity_type]["elevation_m"] += elevation
         if is_run(activity_type):
             run_distance_km += distance_km
-            country = activity.get("location_country") or "Unknown"
-            countries[country]["count"] += 1
-            countries[country]["distance_km"] += distance_km
+            country = activity.get("location_country")
+            if country:
+                countries[country]["count"] += 1
+                countries[country]["distance_km"] += distance_km
 
         monthly[month]["count"] += 1
         monthly[month]["distance_km"] += distance_km

@@ -6,6 +6,7 @@ const filterButtons = document.querySelectorAll("[data-filter]");
 
 let dashboardData = null;
 let currentFilter = "recent";
+const routeMaps = new Map();
 
 function preferredTheme() {
   const saved = localStorage.getItem("theme");
@@ -70,12 +71,9 @@ function formatDate(value) {
   });
 }
 
-function activityUrl(activity) {
-  return activity.url || (activity.id ? `https://www.strava.com/activities/${activity.id}` : "#");
-}
-
 function countryForActivity(activity) {
-  return activity.location_country || activity.country || activity.raw?.location_country || inferCountryFromRoute(activity);
+  const country = activity.location_country || activity.country || activity.raw?.location_country || inferCountryFromRoute(activity);
+  return country === "Unknown" ? null : country;
 }
 
 function inferCountryFromRoute(activity) {
@@ -88,6 +86,11 @@ function inferCountryFromRoute(activity) {
     return "India";
   }
   return "Unknown";
+}
+
+function activitySubtitle(activity) {
+  const country = countryForActivity(activity);
+  return [formatDate(activity.start), country].filter(Boolean).join(" - ");
 }
 
 function detailRows(activity) {
@@ -170,6 +173,8 @@ function renderActivities() {
     return;
   }
   const activities = sortedRuns();
+  routeMaps.forEach((map) => map.remove());
+  routeMaps.clear();
   container.innerHTML = "";
 
   if (!activities.length) {
@@ -183,13 +188,14 @@ function renderActivities() {
   }
 
   for (const activity of activities) {
+    const activityKey = String(activity.id || `${activity.name}-${activity.start}`).replace(/[^a-zA-Z0-9_-]/g, "-");
     const item = document.createElement("article");
     item.className = "activity";
     item.innerHTML = `
       <button class="activity-summary" type="button" aria-expanded="false">
         <span>
           <strong>${activity.name || "Untitled run"}</strong>
-          <small>${formatDate(activity.start)} &middot; ${countryForActivity(activity)}</small>
+          <small>${activitySubtitle(activity)}</small>
         </span>
         <span class="activity-meta">
           <b>${formatNumber.format(distanceKm(activity))} km</b>
@@ -197,94 +203,171 @@ function renderActivities() {
         </span>
       </button>
       <div class="activity-detail" hidden>
-        ${renderRouteMap(activity)}
+        ${renderRouteMap(activity, activityKey)}
         ${renderRunCharts(activity)}
-        <dl class="detail-grid">
+        <button class="details-toggle" type="button" aria-expanded="false">Show all details</button>
+        <dl class="detail-grid" hidden>
           ${detailRows(activity)
             .map(([key, value]) => `<div><dt>${key}</dt><dd>${value}</dd></div>`)
             .join("")}
         </dl>
-        <a class="strava-link" href="${activityUrl(activity)}" target="_blank" rel="noreferrer">Open on Strava</a>
       </div>
     `;
 
     const summary = item.querySelector(".activity-summary");
     const detail = item.querySelector(".activity-detail");
+    const detailsToggle = item.querySelector(".details-toggle");
+    const detailGrid = item.querySelector(".detail-grid");
     summary.addEventListener("click", () => {
       const isOpen = !detail.hidden;
       detail.hidden = isOpen;
       summary.setAttribute("aria-expanded", String(!isOpen));
       item.classList.toggle("is-open", !isOpen);
+      if (!isOpen) {
+        requestAnimationFrame(() => initializeRouteMap(activity, activityKey));
+      }
+    });
+    detailsToggle.addEventListener("click", () => {
+      const isOpen = !detailGrid.hidden;
+      detailGrid.hidden = isOpen;
+      detailsToggle.textContent = isOpen ? "Show all details" : "Hide details";
+      detailsToggle.setAttribute("aria-expanded", String(!isOpen));
     });
     container.appendChild(item);
   }
 }
 
-function renderRouteMap(activity) {
+function renderRouteMap(activity, activityKey) {
   const coordinates = activity.geometry?.coordinates || [];
   if (coordinates.length < 2) {
     return `<div class="route-map route-empty">No route map available for this activity.</div>`;
   }
 
-  const points = scaleCoordinates(coordinates);
   return `
-    <div class="route-map" aria-label="Run route preview">
-      <svg viewBox="0 0 640 280" role="img">
-        <polyline points="${points}" />
-      </svg>
-    </div>
+    <div id="route-map-${activityKey}" class="route-map" aria-label="Run route map"></div>
   `;
 }
 
-function scaleCoordinates(coordinates) {
-  const longitudes = coordinates.map((point) => point[0]);
-  const latitudes = coordinates.map((point) => point[1]);
-  const minLongitude = Math.min(...longitudes);
-  const maxLongitude = Math.max(...longitudes);
-  const minLatitude = Math.min(...latitudes);
-  const maxLatitude = Math.max(...latitudes);
-  const longitudeSpan = maxLongitude - minLongitude || 1;
-  const latitudeSpan = maxLatitude - minLatitude || 1;
-  const padding = 24;
-  const width = 640 - padding * 2;
-  const height = 280 - padding * 2;
+function initializeRouteMap(activity, activityKey) {
+  const element = document.getElementById(`route-map-${activityKey}`);
+  const coordinates = activity.geometry?.coordinates || [];
+  if (!element || coordinates.length < 2) {
+    return;
+  }
+  if (!window.L) {
+    element.classList.add("route-empty");
+    element.textContent = "Map tiles could not be loaded.";
+    return;
+  }
 
-  return coordinates
-    .map(([longitude, latitude]) => {
-      const x = padding + ((longitude - minLongitude) / longitudeSpan) * width;
-      const y = padding + (1 - (latitude - minLatitude) / latitudeSpan) * height;
-      return `${x.toFixed(1)},${y.toFixed(1)}`;
-    })
-    .join(" ");
+  if (routeMaps.has(activityKey)) {
+    routeMaps.get(activityKey).invalidateSize();
+    return;
+  }
+
+  const latLngs = coordinates.map(([longitude, latitude]) => [latitude, longitude]);
+  const map = L.map(element, {
+    scrollWheelZoom: false,
+    zoomControl: false,
+  });
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+  }).addTo(map);
+  const route = L.polyline(latLngs, {
+    color: "#ff2e63",
+    opacity: 0.92,
+    weight: 6,
+    lineCap: "round",
+    lineJoin: "round",
+  }).addTo(map);
+  map.fitBounds(route.getBounds(), { padding: [24, 24] });
+  routeMaps.set(activityKey, map);
+  setTimeout(() => map.invalidateSize(), 120);
 }
 
 function renderRunCharts(activity) {
   const pace = paceMinutesPerKm(activity);
-  const speed = pace ? 60 / pace : 0;
-  const elevation = Number(activity.elevation_m || activity.raw?.total_elevation_gain || 0);
-  const distance = distanceKm(activity);
-  const metrics = [
-    ["Distance", distance, "km", Math.max(distance, 21.1)],
-    ["Pace", pace || 0, "min/km", 8],
-    ["Speed", speed, "km/h", 18],
-    ["Elevation", elevation, "m", Math.max(elevation, 150)],
-  ];
+  const heartRate = Number(activity.average_heartrate || activity.raw?.average_heartrate || 0);
+  const paceSeries = metricSeries(activity, "pace");
+  const heartRateSeries = metricSeries(activity, "heartrate");
 
   return `
-    <div class="mini-charts">
-      ${metrics
-        .map(([label, value, unit, max]) => {
-          const width = Math.max(4, Math.min(100, (Number(value) / Number(max)) * 100));
-          return `
-            <div class="chart-row">
-              <span>${label}</span>
-              <div><i style="width: ${width}%"></i></div>
-              <b>${formatNumber.format(Number(value))} ${unit}</b>
-            </div>
-          `;
-        })
-        .join("")}
+    <div class="chart-panel">
+      ${renderLineChart("Pace", paceSeries, pace ? formatPace(pace) : "No pace data", true)}
+      ${renderLineChart(
+        "Heart rate",
+        heartRateSeries,
+        heartRate ? `${formatWholeNumber.format(heartRate)} bpm avg` : "No heart rate data",
+        false
+      )}
     </div>
+  `;
+}
+
+function metricSeries(activity, metric) {
+  const raw = activity.raw || {};
+  const splits = raw.splits_metric || raw.splits_standard || activity.splits_metric || [];
+  if (Array.isArray(splits) && splits.length) {
+    const values = splits
+      .map((split) => {
+        if (metric === "pace" && split.moving_time && split.distance) {
+          return (Number(split.moving_time) / 60) / (Number(split.distance) / 1000);
+        }
+        if (metric === "heartrate") {
+          return Number(split.average_heartrate || split.avg_heartrate || 0);
+        }
+        return 0;
+      })
+      .filter((value) => Number.isFinite(value) && value > 0);
+    if (values.length) {
+      return values;
+    }
+  }
+
+  if (metric === "pace") {
+    const pace = paceMinutesPerKm(activity);
+    return Number.isFinite(pace) ? [pace] : [];
+  }
+
+  const heartRate = Number(activity.average_heartrate || raw.average_heartrate || 0);
+  return heartRate > 0 ? [heartRate] : [];
+}
+
+function renderLineChart(label, values, emptyLabel, invert = false) {
+  if (!values.length) {
+    return `
+      <section class="line-card">
+        <h3>${label}</h3>
+        <div class="chart-empty">${emptyLabel}</div>
+      </section>
+    `;
+  }
+
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const span = max - min || 1;
+  const points = values
+    .map((value, index) => {
+      const normalized = (value - min) / span;
+      const y = invert ? 24 + normalized * 92 : 116 - normalized * 92;
+      if (values.length === 1) {
+        return `0,${y.toFixed(1)} 300,${y.toFixed(1)}`;
+      }
+      const x = (index / (values.length - 1)) * 300;
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    })
+    .join(" ");
+
+  return `
+    <section class="line-card">
+      <div>
+        <h3>${label}</h3>
+        <span>${emptyLabel}</span>
+      </div>
+      <svg viewBox="0 0 300 140" preserveAspectRatio="none" aria-label="${label} graph">
+        <polyline points="${points}" />
+      </svg>
+    </section>
   `;
 }
 
@@ -296,6 +379,9 @@ function renderCountries() {
   const countries = new Map();
   for (const activity of dashboardData.activities.filter((item) => isRunType(item.type))) {
     const country = countryForActivity(activity);
+    if (!country) {
+      continue;
+    }
     const current = countries.get(country) || { count: 0, distance: 0 };
     current.count += 1;
     current.distance += distanceKm(activity);
@@ -314,6 +400,15 @@ function renderCountries() {
       `
     )
     .join("");
+
+  if (!container.innerHTML) {
+    container.innerHTML = `
+      <article>
+        <strong>No country data yet</strong>
+        <span>Run locations will appear after Strava publishes country fields.</span>
+      </article>
+    `;
+  }
 }
 
 function fallbackFromRoutes(summary, status, routes) {

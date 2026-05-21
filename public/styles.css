@@ -295,26 +295,17 @@ dt {
 }
 
 .route-map {
-  background: linear-gradient(135deg, var(--soft), color-mix(in srgb, var(--panel-strong) 88%, var(--accent-2) 12%));
+  background: var(--soft);
   border: 1px solid var(--line);
   border-radius: 8px;
-  min-height: 220px;
+  height: 340px;
+  min-height: 280px;
   overflow: hidden;
 }
 
-.route-map svg {
-  display: block;
-  height: 100%;
-  min-height: 220px;
-  width: 100%;
-}
-
-.route-map polyline {
-  fill: none;
-  stroke: var(--accent-2);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 6;
+.leaflet-container {
+  background: var(--soft);
+  font: inherit;
 }
 
 .route-empty {
@@ -325,39 +316,79 @@ dt {
   padding: 20px;
 }
 
-.mini-charts {
+.chart-panel {
   display: grid;
-  gap: 10px;
-}
-
-.chart-row {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
-  grid-template-columns: 96px 1fr 90px;
 }
 
-.chart-row span {
-  width: 88px;
+.line-card {
+  background: color-mix(in srgb, var(--panel-strong) 78%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 12px;
+  min-height: 190px;
+  padding: 14px;
 }
 
-.chart-row div {
-  background: color-mix(in srgb, var(--line) 70%, transparent);
-  border-radius: 999px;
-  flex: 1;
-  height: 10px;
-  overflow: hidden;
+.line-card div {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
 }
 
-.chart-row i {
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  border-radius: inherit;
+.line-card h3 {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.line-card span {
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.line-card svg {
   display: block;
-  height: 100%;
+  height: 120px;
+  width: 100%;
 }
 
-.chart-row b {
-  font-size: 0.88rem;
-  text-align: right;
-  width: 92px;
+.line-card polyline {
+  fill: none;
+  stroke: var(--accent-2);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 4;
+  vector-effect: non-scaling-stroke;
+}
+
+.chart-empty {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  justify-content: center;
+  min-height: 120px;
+}
+
+.details-toggle {
+  justify-self: start;
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 800;
+  padding: 9px 14px;
+}
+
+.details-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .detail-grid {
@@ -383,12 +414,6 @@ dt {
 dd {
   margin: 6px 0 0;
   overflow-wrap: anywhere;
-}
-
-.strava-link {
-  color: var(--accent);
-  font-weight: 800;
-  text-decoration: none;
 }
 
 .empty {
@@ -426,14 +451,12 @@ dd {
     text-align: left;
   }
 
-  .chart-row {
-    align-items: flex-start;
-    flex-direction: column;
+  .chart-panel {
+    grid-template-columns: 1fr;
   }
 
-  .chart-row span,
-  .chart-row b {
-    width: auto;
+  .route-map {
+    height: 280px;
   }
 }
 
