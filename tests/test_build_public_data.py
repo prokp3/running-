@@ -29,6 +29,14 @@ class BuildPublicDataTests(unittest.TestCase):
                 "total_elevation_gain": 110,
                 "start_date_local": "2026-04-02T12:00:00Z",
             },
+            {
+                "id": 12,
+                "name": "Gym",
+                "sport_type": "WeightTraining",
+                "distance": 0,
+                "moving_time": 1800,
+                "start_date_local": "2026-05-01T07:00:00Z",
+            },
         ]
 
         summary = build_public_data.summarize(activities)
@@ -39,8 +47,10 @@ class BuildPublicDataTests(unittest.TestCase):
         self.assertEqual(summary["totals"]["diet_coke_cans"], 40984)
         self.assertEqual(summary["totals"]["moving_hours"], 1.42)
         self.assertEqual(summary["by_type"]["Run"]["count"], 1)
+        self.assertNotIn("WeightTraining", summary["by_type"])
         self.assertEqual(summary["monthly"]["2026-05"]["distance_km"], 5.0)
         self.assertEqual(summary["recent"][0]["name"], "Morning Run")
+        self.assertEqual(len(summary["activities"]), 2)
 
     def test_build_routes_geojson_decodes_activity_polylines(self) -> None:
         routes = build_public_data.build_routes_geojson(
@@ -51,6 +61,17 @@ class BuildPublicDataTests(unittest.TestCase):
                     "sport_type": "Run",
                     "distance": 5000,
                     "moving_time": 1500,
+                    "total_elevation_gain": 42.5,
+                    "location_country": "India",
+                    "start_date_local": "2026-05-14T06:30:00Z",
+                    "map": {"summary_polyline": "_p~iF~ps|U_ulLnnqC_mqNvxq`@"},
+                },
+                {
+                    "id": 11,
+                    "name": "Zero Distance",
+                    "sport_type": "Run",
+                    "distance": 0,
+                    "moving_time": 500,
                     "start_date_local": "2026-05-14T06:30:00Z",
                     "map": {"summary_polyline": "_p~iF~ps|U_ulLnnqC_mqNvxq`@"},
                 }
@@ -61,6 +82,8 @@ class BuildPublicDataTests(unittest.TestCase):
         self.assertEqual(len(routes["features"]), 1)
         self.assertEqual(routes["features"][0]["geometry"]["type"], "LineString")
         self.assertEqual(routes["features"][0]["geometry"]["coordinates"][0], [-120.2, 38.5])
+        self.assertEqual(routes["features"][0]["properties"]["location_country"], "India")
+        self.assertEqual(routes["features"][0]["properties"]["raw"]["id"], 10)
 
     def test_concentrated_route_center_prefers_densest_run_points(self) -> None:
         routes = {

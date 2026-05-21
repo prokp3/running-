@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fitness Stats</title>
+    <title>World on my feet</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -12,11 +12,11 @@
         <div class="topbar">
           <p class="eyebrow">Garmin / Strava dashboard</p>
           <button id="theme-toggle" class="icon-button" type="button" aria-label="Switch to dark mode" title="Switch theme">
-            <span id="theme-icon">Moon</span>
+            <span id="theme-icon">Dark</span>
           </button>
         </div>
         <div>
-          <h1>Fitness Stats</h1>
+          <h1>World on my feet</h1>
           <p id="generated">Loading latest stats...</p>
         </div>
       </header>
@@ -55,8 +55,22 @@
       </section>
 
       <section>
-        <h2>Recent Activities</h2>
-        <div id="recent" class="activity-list"></div>
+        <div class="section-heading">
+          <h2>Countries Run In</h2>
+        </div>
+        <div id="countries" class="country-grid"></div>
+      </section>
+
+      <section>
+        <div class="section-heading">
+          <h2>Runs</h2>
+          <div class="segmented" aria-label="Run filters">
+            <button class="is-active" type="button" data-filter="recent">Recent</button>
+            <button type="button" data-filter="longest">Longest</button>
+            <button type="button" data-filter="fastest">Fastest</button>
+          </div>
+        </div>
+        <div id="runs" class="activity-list"></div>
       </section>
     </main>
 

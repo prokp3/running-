@@ -30,6 +30,10 @@ def moving_hours(seconds: float | int | None) -> float:
     return round(float(seconds or 0) / 3600, 2)
 
 
+def distance_positive(activity: dict[str, Any]) -> bool:
+    return km(activity.get("distance")) > 0
+
+
 def is_run(activity_type: str) -> bool:
     return activity_type in RUN_TYPES or "run" in activity_type.lower()
 
@@ -79,6 +83,9 @@ def build_routes_geojson(activities: list[dict[str, Any]]) -> dict[str, Any]:
     features = []
 
     for activity in activities:
+        if not distance_positive(activity):
+            continue
+
         polyline = activity_polyline(activity)
         if not polyline:
             continue
@@ -100,6 +107,15 @@ def build_routes_geojson(activities: list[dict[str, Any]]) -> dict[str, Any]:
                     "start": activity.get("start_date_local") or activity.get("start_date"),
                     "distance_km": km(activity.get("distance")),
                     "moving_hours": moving_hours(activity.get("moving_time")),
+                    "elevation_m": round(float(activity.get("total_elevation_gain") or 0), 1),
+                    "location_city": activity.get("location_city"),
+                    "location_state": activity.get("location_state"),
+                    "location_country": activity.get("location_country"),
+                    "average_speed": activity.get("average_speed"),
+                    "max_speed": activity.get("max_speed"),
+                    "average_heartrate": activity.get("average_heartrate"),
+                    "max_heartrate": activity.get("max_heartrate"),
+                    "raw": activity,
                     "url": f"https://www.strava.com/activities/{activity_id}" if activity_id else None,
                 },
             }
@@ -133,6 +149,7 @@ def concentrated_route_center(routes: dict[str, Any]) -> dict[str, float] | None
 
 
 def summarize(activities: list[dict[str, Any]]) -> dict[str, Any]:
+    activities = [activity for activity in activities if distance_positive(activity)]
     by_type: dict[str, dict[str, Any]] = defaultdict(
         lambda: {"count": 0, "distance_km": 0.0, "moving_hours": 0.0, "elevation_m": 0.0}
     )
@@ -140,6 +157,8 @@ def summarize(activities: list[dict[str, Any]]) -> dict[str, Any]:
         lambda: {"count": 0, "distance_km": 0.0, "moving_hours": 0.0}
     )
     recent = []
+    activity_details = []
+    countries: dict[str, dict[str, Any]] = defaultdict(lambda: {"count": 0, "distance_km": 0.0})
     run_distance_km = 0.0
 
     for activity in activities:
@@ -156,22 +175,34 @@ def summarize(activities: list[dict[str, Any]]) -> dict[str, Any]:
         by_type[activity_type]["elevation_m"] += elevation
         if is_run(activity_type):
             run_distance_km += distance_km
+            country = activity.get("location_country") or "Unknown"
+            countries[country]["count"] += 1
+            countries[country]["distance_km"] += distance_km
 
         monthly[month]["count"] += 1
         monthly[month]["distance_km"] += distance_km
         monthly[month]["moving_hours"] += hours
 
-        recent.append(
-            {
-                "name": activity.get("name", "Untitled activity"),
-                "type": activity_type,
-                "start": start,
-                "distance_km": distance_km,
-                "moving_hours": hours,
-                "elevation_m": elevation,
-                "url": f"https://www.strava.com/activities/{activity.get('id')}" if activity.get("id") else None,
-            }
-        )
+        detail = {
+            "id": activity.get("id"),
+            "name": activity.get("name", "Untitled activity"),
+            "type": activity_type,
+            "start": start,
+            "distance_km": distance_km,
+            "moving_hours": hours,
+            "elevation_m": elevation,
+            "location_city": activity.get("location_city"),
+            "location_state": activity.get("location_state"),
+            "location_country": activity.get("location_country"),
+            "average_speed": activity.get("average_speed"),
+            "max_speed": activity.get("max_speed"),
+            "average_heartrate": activity.get("average_heartrate"),
+            "max_heartrate": activity.get("max_heartrate"),
+            "raw": activity,
+            "url": f"https://www.strava.com/activities/{activity.get('id')}" if activity.get("id") else None,
+        }
+        activity_details.append(detail)
+        recent.append(detail)
 
     total_distance = round(sum(item["distance_km"] for item in by_type.values()), 2)
     total_hours = round(sum(item["moving_hours"] for item in by_type.values()), 2)
@@ -190,6 +221,8 @@ def summarize(activities: list[dict[str, Any]]) -> dict[str, Any]:
         },
         "by_type": dict(sorted(by_type.items())),
         "monthly": dict(sorted(monthly.items())),
+        "countries": dict(sorted(countries.items())),
+        "activities": sorted(activity_details, key=lambda item: item.get("start") or "", reverse=True),
         "recent": sorted(recent, key=lambda item: item.get("start") or "", reverse=True)[:20],
     }
 
@@ -198,6 +231,7 @@ def main() -> None:
     PUBLIC_DATA_DIR.mkdir(parents=True, exist_ok=True)
     payload = load_payload()
     activities = payload.get("activities", [])
+    visible_activities = [activity for activity in activities if distance_positive(activity)]
     summary = summarize(activities)
     summary["source"] = payload.get("source")
     summary["source_fetched_at"] = payload.get("fetched_at")
@@ -207,7 +241,7 @@ def main() -> None:
         "source": payload.get("source"),
         "source_fetched_at": payload.get("fetched_at"),
         "generated_at": summary["generated_at"],
-        "activity_count": len(activities),
+        "activity_count": len(visible_activities),
         "route_count": len(routes["features"]),
         "update_frequency": "Every 6 hours via GitHub Actions",
     }
