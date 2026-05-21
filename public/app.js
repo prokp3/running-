@@ -2,23 +2,6 @@ const formatNumber = new Intl.NumberFormat("en", { maximumFractionDigits: 1 });
 const formatWholeNumber = new Intl.NumberFormat("en", { maximumFractionDigits: 0 });
 const themeButton = document.getElementById("theme-toggle");
 const themeIcon = document.getElementById("theme-icon");
-let activeMap;
-let activeTileLayer;
-let mapResizeObserver;
-
-const routeColors = {
-  Run: "#d9462f",
-  TrailRun: "#b72818",
-  Ride: "#2067b0",
-  MountainBikeRide: "#184d84",
-  Walk: "#0f7b63",
-  Hike: "#76512f",
-};
-
-const tileUrls = {
-  light: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-  dark: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-};
 
 function preferredTheme() {
   const saved = localStorage.getItem("theme");
@@ -33,35 +16,6 @@ function applyTheme(theme) {
   localStorage.setItem("theme", theme);
   themeIcon.textContent = theme === "dark" ? "Sun" : "Moon";
   themeButton.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
-
-  if (activeMap && activeTileLayer) {
-    activeMap.removeLayer(activeTileLayer);
-    activeTileLayer = createTileLayer(theme).addTo(activeMap);
-  }
-}
-
-function createTileLayer(theme) {
-  return L.tileLayer(tileUrls[theme], {
-    attribution:
-      theme === "dark"
-        ? '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-        : '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    maxZoom: 19,
-  });
-}
-
-function invalidateMapSize(map) {
-  requestAnimationFrame(() => {
-    map.invalidateSize();
-  });
-
-  setTimeout(() => {
-    map.invalidateSize();
-  }, 300);
-
-  setTimeout(() => {
-    map.invalidateSize();
-  }, 1000);
 }
 
 function setText(id, value) {
@@ -123,52 +77,6 @@ function renderRecent(activities) {
   }
 }
 
-function routeStyle(feature) {
-  return {
-    color: routeColors[feature.properties.type] || "#48c79f",
-    opacity: 0.78,
-    weight: 4,
-  };
-}
-
-function popupContent(feature) {
-  const props = feature.properties;
-  const date = props.start ? props.start.slice(0, 10) : "Unknown date";
-  const label = `${props.type} &middot; ${date} &middot; ${formatNumber.format(props.distance_km)} km`;
-  const name = props.url
-    ? `<a href="${props.url}" target="_blank" rel="noreferrer">${props.name}</a>`
-    : props.name;
-  return `<strong>${name}</strong><br>${label}`;
-}
-
-function concentratedRouteCenter(routes) {
-  const features = routes.features || [];
-  let points = features
-    .filter((feature) => isRunType(feature.properties.type))
-    .flatMap((feature) => feature.geometry.coordinates || []);
-
-  if (!points.length) {
-    points = features.flatMap((feature) => feature.geometry.coordinates || []);
-  }
-
-  if (!points.length) {
-    return null;
-  }
-
-  const buckets = new Map();
-  for (const [longitude, latitude] of points) {
-    const key = `${latitude.toFixed(2)},${longitude.toFixed(2)}`;
-    const bucket = buckets.get(key) || [];
-    bucket.push([longitude, latitude]);
-    buckets.set(key, bucket);
-  }
-
-  const densest = [...buckets.values()].sort((a, b) => b.length - a.length)[0];
-  const longitude = densest.reduce((sum, point) => sum + point[0], 0) / densest.length;
-  const latitude = densest.reduce((sum, point) => sum + point[1], 0) / densest.length;
-  return { latitude, longitude };
-}
-
 function fallbackFromRoutes(summary, status, routes) {
   const features = routes.features || [];
   const routeActivities = features
@@ -190,7 +98,6 @@ function fallbackFromRoutes(summary, status, routes) {
       moving_hours: routeHours,
       elevation_m: summary.totals.elevation_m || 0,
     },
-    map_center: summary.map_center || concentratedRouteCenter(routes),
     recent: routeActivities.slice(0, 20),
     using_route_fallback: true,
   };
@@ -225,85 +132,32 @@ function renderStats(data, status) {
   } else {
     showStatus(
       "No imported activities yet",
-      "The site is ready, but the public data files are still empty. Run the Update fitness data workflow to publish your real activities and route map."
+      "The site is ready, but the public data files are still empty. Run the Update fitness data workflow to publish your real activities."
     );
   }
 
   renderRecent(data.recent || []);
 }
 
-function renderMap(routes, mapCenter) {
-  const mapElement = document.getElementById("map");
-  if (!window.L) {
-    mapElement.classList.add("map-empty");
-    mapElement.innerHTML = "<strong>Map library could not be loaded.</strong>";
-    return;
-  }
-
-  const features = routes.features || [];
-  if (!features.length) {
-    mapElement.classList.add("map-empty");
-    mapElement.innerHTML = `
-      <div>
-        <strong>No GPS routes imported yet</strong>
-        <p>Routes will appear here after the Strava refresh workflow writes route data.</p>
-      </div>
-    `;
-    return;
-  }
-
-  const initialCenter = mapCenter || concentratedRouteCenter(routes);
-  if (mapResizeObserver) {
-    mapResizeObserver.disconnect();
-  }
-
-  activeMap = L.map("map", {
-    scrollWheelZoom: true,
-    touchZoom: true,
-    trackResize: true,
-  }).setView(
-    [initialCenter.latitude, initialCenter.longitude],
-    12
-  );
-  const map = activeMap;
-  activeTileLayer = createTileLayer(document.documentElement.dataset.theme || "light").addTo(map);
-  activeTileLayer.on("load", () => {
-    invalidateMapSize(map);
-  });
-
-  L.geoJSON(routes, {
-    style: routeStyle,
-    onEachFeature(feature, layer) {
-      layer.bindPopup(popupContent(feature));
-    },
-  }).addTo(map);
-
-  invalidateMapSize(map);
-
-  window.addEventListener("resize", () => {
-    map.invalidateSize();
-  });
-
-  if ("ResizeObserver" in window) {
-    mapResizeObserver = new ResizeObserver(() => {
-      map.invalidateSize();
-    });
-    mapResizeObserver.observe(mapElement);
-  }
-}
-
 async function loadDashboard() {
-  const [summary, status, routes] = await Promise.all([
+  const [summary, status] = await Promise.all([
     loadJson("data/summary.json"),
     loadJson("data/status.json"),
-    loadJson("data/routes.geojson"),
   ]);
   const summaryIsEmpty = Number(summary.totals.activities) === 0;
-  const hasImportedRoutes = routes.features && routes.features.length > 0;
-  const data = summaryIsEmpty && hasImportedRoutes ? fallbackFromRoutes(summary, status, routes) : summary;
+  let data = summary;
+
+  if (summaryIsEmpty) {
+    try {
+      const routes = await loadJson("data/routes.geojson");
+      const hasImportedRoutes = routes.features && routes.features.length > 0;
+      data = hasImportedRoutes ? fallbackFromRoutes(summary, status, routes) : summary;
+    } catch (error) {
+      data = summary;
+    }
+  }
 
   renderStats(data, status);
-  renderMap(routes, data.map_center);
 }
 
 applyTheme(preferredTheme());

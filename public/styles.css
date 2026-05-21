@@ -110,8 +110,7 @@ h2 {
 }
 
 .status p,
-.empty p,
-.map-empty p {
+.empty p {
   color: var(--muted);
   margin: 6px 0 0;
 }
@@ -151,50 +150,6 @@ h2 {
 .activity-list {
   display: grid;
   gap: 10px;
-}
-
-#map {
-  height: 520px;
-}
-
-.map-shell {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.map-empty {
-  align-items: center;
-  color: var(--muted);
-  display: flex;
-  height: auto;
-  justify-content: center;
-  min-height: 180px;
-  padding: 24px;
-  text-align: center;
-}
-
-.map-empty strong {
-  color: var(--ink);
-}
-
-.leaflet-popup-content {
-  color: var(--ink);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  margin: 12px;
-}
-
-.leaflet-popup-content-wrapper,
-.leaflet-popup-tip {
-  background: var(--panel);
-  color: var(--ink);
-}
-
-.leaflet-popup-content a {
-  color: var(--accent);
-  font-weight: 700;
-  text-decoration: none;
 }
 
 .activity {
@@ -243,9 +198,6 @@ h2 {
     flex-direction: column;
   }
 
-  #map {
-    height: 420px;
-  }
 }
 
 @media (min-width: 761px) and (max-width: 980px) {

@@ -4,12 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Fitness Stats</title>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIINfQPD8h+UXTmfIqm41Q8YlBqD4xQyV0w="
-      crossorigin=""
-    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -32,7 +26,7 @@
           <h2>No imported activities yet</h2>
           <p>
             The site is ready, but the public data files are still empty. Connect Strava through the README setup,
-            then run the data workflow to publish your real activities and route map.
+            then run the data workflow to publish your real activities.
           </p>
         </div>
       </section>
@@ -61,21 +55,11 @@
       </section>
 
       <section>
-        <h2>Route Map</h2>
-        <div id="map" class="map-shell"></div>
-      </section>
-
-      <section>
         <h2>Recent Activities</h2>
         <div id="recent" class="activity-list"></div>
       </section>
     </main>
 
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
     <script src="app.js"></script>
   </body>
 </html>
