@@ -209,10 +209,12 @@ dt {
 }
 
 .segmented {
+  background: var(--panel-strong);
   background: color-mix(in srgb, var(--panel-strong) 76%, transparent);
   border: 1px solid var(--line);
   border-radius: 999px;
   display: inline-flex;
+  gap: 2px;
   padding: 4px;
 }
 
@@ -220,12 +222,21 @@ dt {
   border: 0;
   border-radius: 999px;
   background: transparent;
+  color: var(--muted);
+  display: inline-flex;
+  justify-content: center;
   padding: 8px 14px;
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
 .segmented button.is-active {
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.segmented button:hover {
+  color: var(--ink);
+  transform: translateY(-1px);
 }
 
 .activity-list {

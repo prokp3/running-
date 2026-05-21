@@ -23,7 +23,10 @@ function applyTheme(theme) {
 }
 
 function setText(id, value) {
-  document.getElementById(id).textContent = value;
+  const element = document.getElementById(id);
+  if (element) {
+    element.textContent = value;
+  }
 }
 
 function isRunType(type) {
@@ -113,6 +116,9 @@ function humanizeKey(key) {
 
 function showStatus(title, message) {
   const status = document.getElementById("status");
+  if (!status) {
+    return;
+  }
   status.hidden = false;
   status.innerHTML = `
     <div>
@@ -123,7 +129,10 @@ function showStatus(title, message) {
 }
 
 function hideStatus() {
-  document.getElementById("status").hidden = true;
+  const status = document.getElementById("status");
+  if (status) {
+    status.hidden = true;
+  }
 }
 
 function activityFromFeature(feature) {
@@ -152,11 +161,14 @@ function sortedRuns() {
   if (currentFilter === "fastest") {
     return [...runs].sort((a, b) => (paceMinutesPerKm(a) || Infinity) - (paceMinutesPerKm(b) || Infinity));
   }
-  return [...runs].sort((a, b) => String(b.start || "").localeCompare(String(a.start || "")));
+  return [...dashboardData.activities].sort((a, b) => String(b.start || "").localeCompare(String(a.start || "")));
 }
 
 function renderActivities() {
-  const container = document.getElementById("runs");
+  const container = document.getElementById("recent") || document.getElementById("runs");
+  if (!container || !dashboardData) {
+    return;
+  }
   const activities = sortedRuns();
   container.innerHTML = "";
 
@@ -164,7 +176,7 @@ function renderActivities() {
     container.innerHTML = `
       <article class="empty">
         <strong>No runs found yet</strong>
-        <p>Once Strava data is imported, runs with distance will show up here.</p>
+        <p>Once Strava data is imported, activities with distance will show up here.</p>
       </article>
     `;
     return;
@@ -278,6 +290,9 @@ function renderRunCharts(activity) {
 
 function renderCountries() {
   const container = document.getElementById("countries");
+  if (!container || !dashboardData) {
+    return;
+  }
   const countries = new Map();
   for (const activity of dashboardData.activities.filter((item) => isRunType(item.type))) {
     const country = countryForActivity(activity);
@@ -409,7 +424,9 @@ filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     currentFilter = button.dataset.filter;
     filterButtons.forEach((item) => item.classList.toggle("is-active", item === button));
-    renderActivities();
+    if (dashboardData) {
+      renderActivities();
+    }
   });
 });
 
