@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-05-31T14:11:01.120021+00:00",
+  "generated_at": "2026-05-31T19:40:43.060830+00:00",
   "totals": {
-    "activities": 79,
-    "distance_km": 308.96,
-    "run_distance_km": 225.45,
-    "diet_coke_cans": 1847951,
-    "moving_hours": 42.17,
-    "elevation_m": 2835.3
+    "activities": 80,
+    "distance_km": 311.39,
+    "run_distance_km": 227.88,
+    "diet_coke_cans": 1867869,
+    "moving_hours": 42.44,
+    "elevation_m": 2892.3
   },
   "by_type": {
     "Hike": {
@@ -22,10 +22,10 @@
       "elevation_m": 150.0
     },
     "Run": {
-      "count": 57,
-      "distance_km": 225.44999999999993,
-      "moving_hours": 26.000000000000007,
-      "elevation_m": 1331.9000000000003
+      "count": 58,
+      "distance_km": 227.87999999999994,
+      "moving_hours": 26.270000000000007,
+      "elevation_m": 1388.9000000000003
     },
     "Swim": {
       "count": 2,
@@ -173,13 +173,101 @@
       "moving_hours": 2.18
     },
     "2026-05": {
-      "count": 2,
-      "distance_km": 4.94,
-      "moving_hours": 1.1500000000000001
+      "count": 3,
+      "distance_km": 7.37,
+      "moving_hours": 1.4200000000000002
     }
   },
   "countries": {},
   "activities": [
+    {
+      "id": 18730893098,
+      "name": "Evening Run",
+      "type": "Run",
+      "start": "2026-05-31T20:21:51Z",
+      "distance_km": 2.43,
+      "moving_hours": 0.27,
+      "elevation_m": 57.0,
+      "location_city": null,
+      "location_state": null,
+      "location_country": null,
+      "average_speed": 2.469,
+      "max_speed": 3.8,
+      "average_heartrate": 168.5,
+      "max_heartrate": 189.0,
+      "raw": {
+        "achievement_count": 0,
+        "athlete": {
+          "id": 130603137,
+          "resource_state": 1
+        },
+        "athlete_count": 1,
+        "average_cadence": 72.2,
+        "average_heartrate": 168.5,
+        "average_speed": 2.469,
+        "average_watts": 264.6,
+        "comment_count": 0,
+        "commute": false,
+        "device_name": "Garmin Instinct 2 Solar",
+        "device_watts": true,
+        "display_hide_heartrate_option": true,
+        "distance": 2429.2,
+        "elapsed_time": 1095,
+        "elev_high": 245.2,
+        "elev_low": 221.6,
+        "end_latlng": [
+          26.242494,
+          72.999685
+        ],
+        "external_id": "garmin_ping_578687638040",
+        "flagged": false,
+        "from_accepted_tag": false,
+        "gear_id": null,
+        "has_heartrate": true,
+        "has_kudoed": false,
+        "heartrate_opt_out": false,
+        "id": 18730893098,
+        "kilojoules": 252.6,
+        "kudos_count": 0,
+        "location_city": null,
+        "location_country": null,
+        "location_state": null,
+        "manual": false,
+        "map": {
+          "id": "a18730893098",
+          "resource_state": 2,
+          "summary_polyline": "uvd_Dqyp|Lp@mCj@iAB@@B@ATi@Ji@Bi@N_@Je@CGOQOGq@UmA[MOYe@AE@KfAmCDUj@mAXcAJS`@qAf@sAN]T_@JYJM`@sAdAgBf@iBR]LIJ@bAd@LNb@TFLADOTIVKNGXKLAb@MLM`@@HDFd@LI^?Ta@`BQf@?VDF^A`A^ZBRIB@NR\\L`@Xr@\\PJBFG~@IVIJG@]GU?KNGXKLMHI?SGe@[OBEL"
+        },
+        "max_heartrate": 189.0,
+        "max_speed": 3.8,
+        "max_watts": 518,
+        "moving_time": 984,
+        "name": "Evening Run",
+        "photo_count": 0,
+        "pr_count": 0,
+        "private": false,
+        "resource_state": 2,
+        "sport_type": "Run",
+        "start_date": "2026-05-31T14:51:51Z",
+        "start_date_local": "2026-05-31T20:21:51Z",
+        "start_latlng": [
+          26.245239,
+          72.996684
+        ],
+        "timezone": "(GMT+05:30) Asia/Kolkata",
+        "total_elevation_gain": 57.0,
+        "total_photo_count": 0,
+        "trainer": false,
+        "type": "Run",
+        "upload_id": 19840093259,
+        "upload_id_str": "19840093259",
+        "utc_offset": 19800.0,
+        "visibility": "followers_only",
+        "weighted_average_watts": 262,
+        "workout_type": null
+      },
+      "url": "https://www.strava.com/activities/18730893098"
+    },
     {
       "id": 18662375337,
       "name": "Evening Swim",
@@ -6770,6 +6858,94 @@
   ],
   "recent": [
     {
+      "id": 18730893098,
+      "name": "Evening Run",
+      "type": "Run",
+      "start": "2026-05-31T20:21:51Z",
+      "distance_km": 2.43,
+      "moving_hours": 0.27,
+      "elevation_m": 57.0,
+      "location_city": null,
+      "location_state": null,
+      "location_country": null,
+      "average_speed": 2.469,
+      "max_speed": 3.8,
+      "average_heartrate": 168.5,
+      "max_heartrate": 189.0,
+      "raw": {
+        "achievement_count": 0,
+        "athlete": {
+          "id": 130603137,
+          "resource_state": 1
+        },
+        "athlete_count": 1,
+        "average_cadence": 72.2,
+        "average_heartrate": 168.5,
+        "average_speed": 2.469,
+        "average_watts": 264.6,
+        "comment_count": 0,
+        "commute": false,
+        "device_name": "Garmin Instinct 2 Solar",
+        "device_watts": true,
+        "display_hide_heartrate_option": true,
+        "distance": 2429.2,
+        "elapsed_time": 1095,
+        "elev_high": 245.2,
+        "elev_low": 221.6,
+        "end_latlng": [
+          26.242494,
+          72.999685
+        ],
+        "external_id": "garmin_ping_578687638040",
+        "flagged": false,
+        "from_accepted_tag": false,
+        "gear_id": null,
+        "has_heartrate": true,
+        "has_kudoed": false,
+        "heartrate_opt_out": false,
+        "id": 18730893098,
+        "kilojoules": 252.6,
+        "kudos_count": 0,
+        "location_city": null,
+        "location_country": null,
+        "location_state": null,
+        "manual": false,
+        "map": {
+          "id": "a18730893098",
+          "resource_state": 2,
+          "summary_polyline": "uvd_Dqyp|Lp@mCj@iAB@@B@ATi@Ji@Bi@N_@Je@CGOQOGq@UmA[MOYe@AE@KfAmCDUj@mAXcAJS`@qAf@sAN]T_@JYJM`@sAdAgBf@iBR]LIJ@bAd@LNb@TFLADOTIVKNGXKLAb@MLM`@@HDFd@LI^?Ta@`BQf@?VDF^A`A^ZBRIB@NR\\L`@Xr@\\PJBFG~@IVIJG@]GU?KNGXKLMHI?SGe@[OBEL"
+        },
+        "max_heartrate": 189.0,
+        "max_speed": 3.8,
+        "max_watts": 518,
+        "moving_time": 984,
+        "name": "Evening Run",
+        "photo_count": 0,
+        "pr_count": 0,
+        "private": false,
+        "resource_state": 2,
+        "sport_type": "Run",
+        "start_date": "2026-05-31T14:51:51Z",
+        "start_date_local": "2026-05-31T20:21:51Z",
+        "start_latlng": [
+          26.245239,
+          72.996684
+        ],
+        "timezone": "(GMT+05:30) Asia/Kolkata",
+        "total_elevation_gain": 57.0,
+        "total_photo_count": 0,
+        "trainer": false,
+        "type": "Run",
+        "upload_id": 19840093259,
+        "upload_id_str": "19840093259",
+        "utc_offset": 19800.0,
+        "visibility": "followers_only",
+        "weighted_average_watts": 262,
+        "workout_type": null
+      },
+      "url": "https://www.strava.com/activities/18730893098"
+    },
+    {
       "id": 18662375337,
       "name": "Evening Swim",
       "type": "Swim",
@@ -8407,91 +8583,10 @@
         "workout_type": null
       },
       "url": "https://www.strava.com/activities/17076607408"
-    },
-    {
-      "id": 17035902235,
-      "name": "Night Walk",
-      "type": "Walk",
-      "start": "2026-01-13T21:13:06Z",
-      "distance_km": 1.33,
-      "moving_hours": 0.22,
-      "elevation_m": 91.4,
-      "location_city": null,
-      "location_state": null,
-      "location_country": null,
-      "average_speed": 1.684,
-      "max_speed": 1.912,
-      "average_heartrate": 125.2,
-      "max_heartrate": 131.0,
-      "raw": {
-        "achievement_count": 0,
-        "athlete": {
-          "id": 130603137,
-          "resource_state": 1
-        },
-        "athlete_count": 1,
-        "average_heartrate": 125.2,
-        "average_speed": 1.684,
-        "comment_count": 0,
-        "commute": false,
-        "device_name": "Apple Watch SE",
-        "display_hide_heartrate_option": true,
-        "distance": 1333.8,
-        "elapsed_time": 1328,
-        "elev_high": 91.4,
-        "elev_low": 0.0,
-        "end_latlng": [
-          15.386843,
-          73.878027
-        ],
-        "external_id": "E8AFB6D0-A29C-4BBE-95D0-1EE50422D9C4.fit",
-        "flagged": false,
-        "from_accepted_tag": false,
-        "gear_id": null,
-        "has_heartrate": true,
-        "has_kudoed": false,
-        "heartrate_opt_out": false,
-        "id": 17035902235,
-        "kudos_count": 0,
-        "location_city": null,
-        "location_country": null,
-        "location_state": null,
-        "manual": false,
-        "map": {
-          "id": "a17035902235",
-          "resource_state": 2,
-          "summary_polyline": "sd}|Aus|aMJPdArAnD|C\\~@hBnBTx@?x@jDhDl@\\t@Tp@Nn@HHAPIXAZSJM@U"
-        },
-        "max_heartrate": 131.0,
-        "max_speed": 1.912,
-        "moving_time": 792,
-        "name": "Night Walk",
-        "photo_count": 0,
-        "pr_count": 0,
-        "private": false,
-        "resource_state": 2,
-        "sport_type": "Walk",
-        "start_date": "2026-01-13T15:43:06Z",
-        "start_date_local": "2026-01-13T21:13:06Z",
-        "start_latlng": [
-          15.392433,
-          73.882619
-        ],
-        "timezone": "(GMT+05:30) Asia/Kolkata",
-        "total_elevation_gain": 91.4,
-        "total_photo_count": 0,
-        "trainer": false,
-        "type": "Walk",
-        "upload_id": 18130048904,
-        "upload_id_str": "18130048904",
-        "utc_offset": 19800.0,
-        "visibility": "followers_only"
-      },
-      "url": "https://www.strava.com/activities/17035902235"
     }
   ],
   "source": "strava",
-  "source_fetched_at": "2026-05-31T14:11:01.056652+00:00",
+  "source_fetched_at": "2026-05-31T19:40:42.998560+00:00",
   "map_center": {
     "latitude": 15.39143,
     "longitude": 73.87801
