@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-06T14:07:20.679066+00:00",
+  "generated_at": "2026-06-06T19:46:18.059166+00:00",
   "totals": {
     "activities": 80,
     "distance_km": 311.39,
@@ -8586,7 +8586,7 @@
     }
   ],
   "source": "strava",
-  "source_fetched_at": "2026-06-06T14:07:20.616006+00:00",
+  "source_fetched_at": "2026-06-06T19:46:17.993081+00:00",
   "map_center": {
     "latitude": 15.39143,
     "longitude": 73.87801
