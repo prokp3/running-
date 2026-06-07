@@ -1,7 +1,7 @@
 {
   "source": "strava",
-  "source_fetched_at": "2026-06-06T19:46:17.993081+00:00",
-  "generated_at": "2026-06-06T19:46:18.059166+00:00",
+  "source_fetched_at": "2026-06-07T04:55:35.881085+00:00",
+  "generated_at": "2026-06-07T04:55:35.945478+00:00",
   "activity_count": 80,
   "route_count": 55,
   "update_frequency": "Every 6 hours via GitHub Actions"
