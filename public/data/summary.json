@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-06-12T15:39:22.635276+00:00",
+  "generated_at": "2026-06-12T20:25:46.159146+00:00",
   "totals": {
-    "activities": 83,
-    "distance_km": 317.46,
+    "activities": 84,
+    "distance_km": 327.84,
     "run_distance_km": 228.55,
     "diet_coke_cans": 1873361,
-    "moving_hours": 43.37,
-    "elevation_m": 3068.3
+    "moving_hours": 46.42,
+    "elevation_m": 3488.3
   },
   "by_type": {
     "Hike": {
@@ -40,10 +40,10 @@
       "elevation_m": 2.9
     },
     "Walk": {
-      "count": 15,
-      "distance_km": 41.48,
-      "moving_hours": 9.419999999999998,
-      "elevation_m": 383.5
+      "count": 16,
+      "distance_km": 51.86,
+      "moving_hours": 12.469999999999997,
+      "elevation_m": 803.4999999999999
     }
   },
   "monthly": {
@@ -178,13 +178,95 @@
       "moving_hours": 1.4200000000000002
     },
     "2026-06": {
-      "count": 3,
-      "distance_km": 6.07,
-      "moving_hours": 0.93
+      "count": 4,
+      "distance_km": 16.450000000000003,
+      "moving_hours": 3.9799999999999995
     }
   },
   "countries": {},
   "activities": [
+    {
+      "id": 18892120195,
+      "name": "Trail run trial",
+      "type": "Walk",
+      "start": "2026-06-12T11:05:17Z",
+      "distance_km": 10.38,
+      "moving_hours": 3.05,
+      "elevation_m": 420.0,
+      "location_city": null,
+      "location_state": null,
+      "location_country": null,
+      "average_speed": 0.946,
+      "max_speed": 6.94,
+      "average_heartrate": 113.2,
+      "max_heartrate": 149.0,
+      "raw": {
+        "achievement_count": 0,
+        "athlete": {
+          "id": 130603137,
+          "resource_state": 1
+        },
+        "athlete_count": 1,
+        "average_cadence": 50.2,
+        "average_heartrate": 113.2,
+        "average_speed": 0.946,
+        "comment_count": 0,
+        "commute": false,
+        "device_name": "Garmin Instinct 2 Solar",
+        "display_hide_heartrate_option": true,
+        "distance": 10383.1,
+        "elapsed_time": 14314,
+        "elev_high": 2953.0,
+        "elev_low": 2704.6,
+        "end_latlng": [
+          32.256126,
+          77.237994
+        ],
+        "external_id": "garmin_ping_583999575003",
+        "flagged": false,
+        "from_accepted_tag": false,
+        "gear_id": null,
+        "has_heartrate": true,
+        "has_kudoed": false,
+        "heartrate_opt_out": false,
+        "id": 18892120195,
+        "kudos_count": 0,
+        "location_city": null,
+        "location_country": null,
+        "location_state": null,
+        "manual": false,
+        "map": {
+          "id": "a18892120195",
+          "resource_state": 2,
+          "summary_polyline": "}twcEk|ivM}@s@Sw@s@s@cBJ{@d@uB@gGw@o@UcAi@O[Ea@^iAPmAMiAUu@u@EWJq@t@s@zA[JUQ]u@e@k@]SO[UIk@TcA?[We@KEOSAeA]w@s@qB_A[g@q@_BMMw@Wu@s@eAuAyBqAi@k@u@_@iA]oAcBs@SMQk@GISOBgAs@ESMOS?w@qAkAcA[gAWuAc@}@IEKLU@k@G_A_AOc@Gk@Bc@bAeDDiBT}AZsAC_@YNGPe@Zo@Z_C[c@P[D{@?k@a@Ke@MCQe@[KQFSSo@So@{@q@e@_@i@wBqB]g@Sk@sA}AaBwAMkAO_@QIu@Fw@GQGIOSCi@[q@s@WFP]KMIi@@NKOF{@X}@RW@M^OD_@Z[AYBMBBIFOKLaAi@EMb@_@XO[u@Y[G]DeBo@gB_@Qc@UFa@QmAMUWQC@W?LAGEFKIBA]LOCIM[IIQ[QBAa@Gc@Wm@o@g@M_@W@Ge@MIEEMSMDQKMIDOIDAYAFAUKGQ_@Qc@@a@MDGCESBBOa@[o@OELc@KEM[So@MUYWGEMu@?KSQGc@?aA[MTM@[OaAMcA_@MLAI]QcAUQWQg@g@?[QASm@gAHIGV[a@g@QS_@c@ReAa@O@e@K]DKJMEe@HMPWAyAd@UKQ@SY?_@FQYx@i@GSKISeAIWQGMo@QWUg@EkAiA]i@MB]Q_@?]Uk@GEMODIQU?CQUSWo@SK@OM[WOe@o@DCEKUMMU}@k@QGSHGYMIGD[i@gAw@GO}@Gm@kAk@YCMS]`@JFL`@AKPb@hAX`@bCfAh@p@HRRG^F`Av@h@t@z@v@d@nAX^DPRBl@v@j@?@Ov@RFH\\AVf@z@`Ad@TrA`@JCHRRNZ?n@Z|@Tj@C?RDB^BXQh@CVQJB?KrAMPW\\EJLZBfAh@LMPA^X\\h@|@z@L\\hA\\d@x@x@LPTd@DZT~@Dv@VNQJAbAXdCTz@d@JZRRJAPNPIf@XP?NVl@Np@TAHFANTR@DJVM?FRNJAd@l@Bf@HFf@?TL^@Vb@v@n@LXTHPKATTDHNFAj@^d@CZDZZ\\EpAXPFL\\vBb@h@Xj@L`@CjAR^PFEhAUR\\ERF`@I`@]d@i@^WL"
+        },
+        "max_heartrate": 149.0,
+        "max_speed": 6.94,
+        "moving_time": 10970,
+        "name": "Trail run trial",
+        "photo_count": 0,
+        "pr_count": 0,
+        "private": false,
+        "resource_state": 2,
+        "sport_type": "Walk",
+        "start_date": "2026-06-12T05:35:17Z",
+        "start_date_local": "2026-06-12T11:05:17Z",
+        "start_latlng": [
+          32.237258,
+          77.222879
+        ],
+        "timezone": "(GMT+05:30) Asia/Kolkata",
+        "total_elevation_gain": 420.0,
+        "total_photo_count": 0,
+        "trainer": false,
+        "type": "Walk",
+        "upload_id": 20004186648,
+        "upload_id_str": "20004186648",
+        "utc_offset": 19800.0,
+        "visibility": "followers_only"
+      },
+      "url": "https://www.strava.com/activities/18892120195"
+    },
     {
       "id": 18883224251,
       "name": "Testing for the trail run",
@@ -7109,6 +7191,88 @@
   ],
   "recent": [
     {
+      "id": 18892120195,
+      "name": "Trail run trial",
+      "type": "Walk",
+      "start": "2026-06-12T11:05:17Z",
+      "distance_km": 10.38,
+      "moving_hours": 3.05,
+      "elevation_m": 420.0,
+      "location_city": null,
+      "location_state": null,
+      "location_country": null,
+      "average_speed": 0.946,
+      "max_speed": 6.94,
+      "average_heartrate": 113.2,
+      "max_heartrate": 149.0,
+      "raw": {
+        "achievement_count": 0,
+        "athlete": {
+          "id": 130603137,
+          "resource_state": 1
+        },
+        "athlete_count": 1,
+        "average_cadence": 50.2,
+        "average_heartrate": 113.2,
+        "average_speed": 0.946,
+        "comment_count": 0,
+        "commute": false,
+        "device_name": "Garmin Instinct 2 Solar",
+        "display_hide_heartrate_option": true,
+        "distance": 10383.1,
+        "elapsed_time": 14314,
+        "elev_high": 2953.0,
+        "elev_low": 2704.6,
+        "end_latlng": [
+          32.256126,
+          77.237994
+        ],
+        "external_id": "garmin_ping_583999575003",
+        "flagged": false,
+        "from_accepted_tag": false,
+        "gear_id": null,
+        "has_heartrate": true,
+        "has_kudoed": false,
+        "heartrate_opt_out": false,
+        "id": 18892120195,
+        "kudos_count": 0,
+        "location_city": null,
+        "location_country": null,
+        "location_state": null,
+        "manual": false,
+        "map": {
+          "id": "a18892120195",
+          "resource_state": 2,
+          "summary_polyline": "}twcEk|ivM}@s@Sw@s@s@cBJ{@d@uB@gGw@o@UcAi@O[Ea@^iAPmAMiAUu@u@EWJq@t@s@zA[JUQ]u@e@k@]SO[UIk@TcA?[We@KEOSAeA]w@s@qB_A[g@q@_BMMw@Wu@s@eAuAyBqAi@k@u@_@iA]oAcBs@SMQk@GISOBgAs@ESMOS?w@qAkAcA[gAWuAc@}@IEKLU@k@G_A_AOc@Gk@Bc@bAeDDiBT}AZsAC_@YNGPe@Zo@Z_C[c@P[D{@?k@a@Ke@MCQe@[KQFSSo@So@{@q@e@_@i@wBqB]g@Sk@sA}AaBwAMkAO_@QIu@Fw@GQGIOSCi@[q@s@WFP]KMIi@@NKOF{@X}@RW@M^OD_@Z[AYBMBBIFOKLaAi@EMb@_@XO[u@Y[G]DeBo@gB_@Qc@UFa@QmAMUWQC@W?LAGEFKIBA]LOCIM[IIQ[QBAa@Gc@Wm@o@g@M_@W@Ge@MIEEMSMDQKMIDOIDAYAFAUKGQ_@Qc@@a@MDGCESBBOa@[o@OELc@KEM[So@MUYWGEMu@?KSQGc@?aA[MTM@[OaAMcA_@MLAI]QcAUQWQg@g@?[QASm@gAHIGV[a@g@QS_@c@ReAa@O@e@K]DKJMEe@HMPWAyAd@UKQ@SY?_@FQYx@i@GSKISeAIWQGMo@QWUg@EkAiA]i@MB]Q_@?]Uk@GEMODIQU?CQUSWo@SK@OM[WOe@o@DCEKUMMU}@k@QGSHGYMIGD[i@gAw@GO}@Gm@kAk@YCMS]`@JFL`@AKPb@hAX`@bCfAh@p@HRRG^F`Av@h@t@z@v@d@nAX^DPRBl@v@j@?@Ov@RFH\\AVf@z@`Ad@TrA`@JCHRRNZ?n@Z|@Tj@C?RDB^BXQh@CVQJB?KrAMPW\\EJLZBfAh@LMPA^X\\h@|@z@L\\hA\\d@x@x@LPTd@DZT~@Dv@VNQJAbAXdCTz@d@JZRRJAPNPIf@XP?NVl@Np@TAHFANTR@DJVM?FRNJAd@l@Bf@HFf@?TL^@Vb@v@n@LXTHPKATTDHNFAj@^d@CZDZZ\\EpAXPFL\\vBb@h@Xj@L`@CjAR^PFEhAUR\\ERF`@I`@]d@i@^WL"
+        },
+        "max_heartrate": 149.0,
+        "max_speed": 6.94,
+        "moving_time": 10970,
+        "name": "Trail run trial",
+        "photo_count": 0,
+        "pr_count": 0,
+        "private": false,
+        "resource_state": 2,
+        "sport_type": "Walk",
+        "start_date": "2026-06-12T05:35:17Z",
+        "start_date_local": "2026-06-12T11:05:17Z",
+        "start_latlng": [
+          32.237258,
+          77.222879
+        ],
+        "timezone": "(GMT+05:30) Asia/Kolkata",
+        "total_elevation_gain": 420.0,
+        "total_photo_count": 0,
+        "trainer": false,
+        "type": "Walk",
+        "upload_id": 20004186648,
+        "upload_id_str": "20004186648",
+        "utc_offset": 19800.0,
+        "visibility": "followers_only"
+      },
+      "url": "https://www.strava.com/activities/18892120195"
+    },
+    {
       "id": 18883224251,
       "name": "Testing for the trail run",
       "type": "Hike",
@@ -8730,98 +8894,10 @@
         "workout_type": null
       },
       "url": "https://www.strava.com/activities/17323782259"
-    },
-    {
-      "id": 17250446236,
-      "name": "Evening Run",
-      "type": "Run",
-      "start": "2026-02-01T18:53:27Z",
-      "distance_km": 5.03,
-      "moving_hours": 0.5,
-      "elevation_m": 46.0,
-      "location_city": null,
-      "location_state": null,
-      "location_country": null,
-      "average_speed": 2.804,
-      "max_speed": 4.06,
-      "average_heartrate": 170.8,
-      "max_heartrate": 191.0,
-      "raw": {
-        "achievement_count": 0,
-        "athlete": {
-          "id": 130603137,
-          "resource_state": 1
-        },
-        "athlete_count": 1,
-        "average_cadence": 75.9,
-        "average_heartrate": 170.8,
-        "average_speed": 2.804,
-        "average_watts": 297.0,
-        "comment_count": 0,
-        "commute": false,
-        "device_name": "Garmin Instinct 2 Solar",
-        "device_watts": true,
-        "display_hide_heartrate_option": true,
-        "distance": 5027.2,
-        "elapsed_time": 2607,
-        "elev_high": 81.6,
-        "elev_low": 65.2,
-        "end_latlng": [
-          15.390979,
-          73.879045
-        ],
-        "external_id": "garmin_ping_530363397584",
-        "flagged": false,
-        "from_accepted_tag": false,
-        "gear_id": null,
-        "has_heartrate": true,
-        "has_kudoed": false,
-        "heartrate_opt_out": false,
-        "id": 17250446236,
-        "kilojoules": 526.1,
-        "kudos_count": 1,
-        "location_city": null,
-        "location_country": null,
-        "location_state": null,
-        "manual": false,
-        "map": {
-          "id": "a17250446236",
-          "resource_state": 2,
-          "summary_polyline": "{b}|Acu|aMq@l@CJBLHNxAnAd@j@f@b@V`@r@p@VPv@~@`A~@FPD\\Bv@FNZXfBpBr@d@j@T|@Tn@Jf@CHDZ`@d@NT^^lAJd@B^Bz@Fl@\\tFTjCn@zKHzCCxBg@nGS~CQvA[|AYfAw@hBWv@Sx@MHCPE~@@r@ER?L?vAEXGpA?v@ItAMlFEh@EF@GEI@AAO@}@Dg@JgDPoCDuCFcAAo@J[EQ?QBIT_@`@yAf@iAb@qA\\uAN_AJkAZ}ENkANyBDkBSgFMgBKgBKiA@WWyCOkDIs@UuDIc@m@iBCGIEw@MI@k@Ga@]u@Qu@YeBuAYa@e@_@[]GMCO"
-        },
-        "max_heartrate": 191.0,
-        "max_speed": 4.06,
-        "max_watts": 379,
-        "moving_time": 1793,
-        "name": "Evening Run",
-        "photo_count": 0,
-        "pr_count": 0,
-        "private": false,
-        "resource_state": 2,
-        "sport_type": "Run",
-        "start_date": "2026-02-01T13:23:27Z",
-        "start_date_local": "2026-02-01T18:53:27Z",
-        "start_latlng": [
-          15.391232,
-          73.882793
-        ],
-        "timezone": "(GMT+05:30) Asia/Kolkata",
-        "total_elevation_gain": 46.0,
-        "total_photo_count": 0,
-        "trainer": false,
-        "type": "Run",
-        "upload_id": 18346332526,
-        "upload_id_str": "18346332526",
-        "utc_offset": 19800.0,
-        "visibility": "followers_only",
-        "weighted_average_watts": 289,
-        "workout_type": null
-      },
-      "url": "https://www.strava.com/activities/17250446236"
     }
   ],
   "source": "strava",
-  "source_fetched_at": "2026-06-12T15:39:22.575484+00:00",
+  "source_fetched_at": "2026-06-12T20:25:46.095235+00:00",
   "map_center": {
     "latitude": 15.39143,
     "longitude": 73.87801
