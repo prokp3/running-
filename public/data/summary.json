@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T15:06:51.399785+00:00",
+  "generated_at": "2026-06-24T20:07:00.403401+00:00",
   "totals": {
     "activities": 85,
     "distance_km": 343.63,
@@ -210,6 +210,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -238,6 +239,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18899027296,
+        "id_str": "18899027296",
         "kilojoules": 1109.3,
         "kudos_count": 0,
         "location_city": null,
@@ -298,6 +300,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -324,6 +327,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18892120195,
+        "id_str": "18892120195",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -380,6 +384,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -406,6 +411,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18883224251,
+        "id_str": "18883224251",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -462,6 +468,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -487,6 +494,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18883220547,
+        "id_str": "18883220547",
         "kilojoules": 70.3,
         "kudos_count": 0,
         "location_city": null,
@@ -544,6 +552,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -569,6 +578,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18883216247,
+        "id_str": "18883216247",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -626,6 +636,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -654,6 +665,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18730893098,
+        "id_str": "18730893098",
         "kilojoules": 252.6,
         "kudos_count": 0,
         "location_city": null,
@@ -714,6 +726,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -736,6 +749,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18662375337,
+        "id_str": "18662375337",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -789,6 +803,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -814,6 +829,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18550952726,
+        "id_str": "18550952726",
         "kilojoules": 107.9,
         "kudos_count": 0,
         "location_city": null,
@@ -871,6 +887,7 @@
         "achievement_count": 2,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -899,6 +916,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18302010848,
+        "id_str": "18302010848",
         "kilojoules": 213.2,
         "kudos_count": 0,
         "location_city": null,
@@ -959,6 +977,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -987,6 +1006,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18027269265,
+        "id_str": "18027269265",
         "kilojoules": 500.5,
         "kudos_count": 0,
         "location_city": null,
@@ -1047,6 +1067,7 @@
         "achievement_count": 1,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -1075,6 +1096,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18018918266,
+        "id_str": "18018918266",
         "kilojoules": 315.1,
         "kudos_count": 0,
         "location_city": null,
@@ -1135,6 +1157,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -1163,6 +1186,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17963965171,
+        "id_str": "17963965171",
         "kilojoules": 281.1,
         "kudos_count": 0,
         "location_city": null,
@@ -1223,6 +1247,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -1251,6 +1276,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17963957224,
+        "id_str": "17963957224",
         "kilojoules": 138.4,
         "kudos_count": 0,
         "location_city": null,
@@ -1311,6 +1337,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -1339,6 +1366,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17963950635,
+        "id_str": "17963950635",
         "kilojoules": 509.1,
         "kudos_count": 0,
         "location_city": null,
@@ -1399,6 +1427,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -1425,6 +1454,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17963943075,
+        "id_str": "17963943075",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -1481,6 +1511,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 9,
@@ -1509,6 +1540,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17642762974,
+        "id_str": "17642762974",
         "kilojoules": 509.4,
         "kudos_count": 0,
         "location_city": null,
@@ -1569,6 +1601,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -1597,6 +1630,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17618815623,
+        "id_str": "17618815623",
         "kilojoules": 526.3,
         "kudos_count": 1,
         "location_city": null,
@@ -1657,6 +1691,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -1685,6 +1720,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17560025283,
+        "id_str": "17560025283",
         "kilojoules": 501.1,
         "kudos_count": 1,
         "location_city": null,
@@ -1745,6 +1781,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -1771,6 +1808,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17491105008,
+        "id_str": "17491105008",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -1827,6 +1865,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -1855,6 +1894,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17491085333,
+        "id_str": "17491085333",
         "kilojoules": 510.3,
         "kudos_count": 1,
         "location_city": null,
@@ -1915,6 +1955,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 5,
@@ -1943,6 +1984,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17323782259,
+        "id_str": "17323782259",
         "kilojoules": 2113.5,
         "kudos_count": 0,
         "location_city": null,
@@ -2003,6 +2045,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -2031,6 +2074,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17250446236,
+        "id_str": "17250446236",
         "kilojoules": 526.1,
         "kudos_count": 1,
         "location_city": null,
@@ -2091,6 +2135,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -2119,6 +2164,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17206198382,
+        "id_str": "17206198382",
         "kilojoules": 1584.4,
         "kudos_count": 1,
         "location_city": null,
@@ -2179,6 +2225,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -2206,6 +2253,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17139424305,
+        "id_str": "17139424305",
         "kilojoules": 686.3,
         "kudos_count": 0,
         "location_city": null,
@@ -2266,6 +2314,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -2293,6 +2342,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17076607408,
+        "id_str": "17076607408",
         "kilojoules": 378.1,
         "kudos_count": 0,
         "location_city": null,
@@ -2353,6 +2403,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -2378,6 +2429,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17035902235,
+        "id_str": "17035902235",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -2434,6 +2486,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -2460,6 +2513,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16819200063,
+        "id_str": "16819200063",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -2516,6 +2570,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -2544,6 +2599,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16819163500,
+        "id_str": "16819163500",
         "kilojoules": 143.4,
         "kudos_count": 0,
         "location_city": null,
@@ -2604,6 +2660,7 @@
         "achievement_count": 2,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -2631,6 +2688,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16631150953,
+        "id_str": "16631150953",
         "kilojoules": 885.2,
         "kudos_count": 0,
         "location_city": null,
@@ -2691,6 +2749,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -2718,6 +2777,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16615079069,
+        "id_str": "16615079069",
         "kilojoules": 236.4,
         "kudos_count": 0,
         "location_city": null,
@@ -2778,6 +2838,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -2800,6 +2861,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16588117457,
+        "id_str": "16588117457",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -2853,6 +2915,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -2875,6 +2938,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16588052831,
+        "id_str": "16588052831",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -2928,6 +2992,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -2950,6 +3015,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16568105150,
+        "id_str": "16568105150",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -3003,6 +3069,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -3025,6 +3092,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16529739907,
+        "id_str": "16529739907",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -3078,6 +3146,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -3102,6 +3171,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16529739901,
+        "id_str": "16529739901",
         "kilojoules": 72.2,
         "kudos_count": 0,
         "location_city": null,
@@ -3159,6 +3229,7 @@
         "achievement_count": 2,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -3186,6 +3257,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16489932202,
+        "id_str": "16489932202",
         "kilojoules": 811.4,
         "kudos_count": 0,
         "location_city": null,
@@ -3246,6 +3318,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -3273,6 +3346,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16446596647,
+        "id_str": "16446596647",
         "kilojoules": 306.2,
         "kudos_count": 0,
         "location_city": null,
@@ -3333,6 +3407,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -3358,6 +3433,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16446596660,
+        "id_str": "16446596660",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -3414,6 +3490,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -3438,6 +3515,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16369757738,
+        "id_str": "16369757738",
         "kilojoules": 78.9,
         "kudos_count": 0,
         "location_city": null,
@@ -3495,6 +3573,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -3519,6 +3598,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16369757751,
+        "id_str": "16369757751",
         "kilojoules": 108.2,
         "kudos_count": 0,
         "location_city": null,
@@ -3576,6 +3656,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -3601,6 +3682,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16137099625,
+        "id_str": "16137099625",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -3657,6 +3739,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -3684,6 +3767,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16098568421,
+        "id_str": "16098568421",
         "kilojoules": 304.0,
         "kudos_count": 0,
         "location_city": null,
@@ -3744,6 +3828,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -3766,6 +3851,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16025246607,
+        "id_str": "16025246607",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -3819,6 +3905,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -3846,6 +3933,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 16013536619,
+        "id_str": "16013536619",
         "kilojoules": 503.1,
         "kudos_count": 0,
         "location_city": null,
@@ -3906,6 +3994,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -3928,6 +4017,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 15943148826,
+        "id_str": "15943148826",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -3981,6 +4071,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -4004,6 +4095,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 15835887344,
+        "id_str": "15835887344",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -4057,6 +4149,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -4082,6 +4175,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 15835879065,
+        "id_str": "15835879065",
         "kilojoules": 511.5,
         "kudos_count": 0,
         "location_city": null,
@@ -4139,6 +4233,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -4164,6 +4259,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 15133814839,
+        "id_str": "15133814839",
         "kilojoules": 148.0,
         "kudos_count": 0,
         "location_city": null,
@@ -4221,6 +4317,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -4247,6 +4344,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 14717417115,
+        "id_str": "14717417115",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -4303,6 +4401,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -4331,6 +4430,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 14708212960,
+        "id_str": "14708212960",
         "kilojoules": 344.6,
         "kudos_count": 0,
         "location_city": null,
@@ -4391,6 +4491,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -4419,6 +4520,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 14680261501,
+        "id_str": "14680261501",
         "kilojoules": 354.9,
         "kudos_count": 0,
         "location_city": null,
@@ -4479,6 +4581,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -4501,6 +4604,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 14616719978,
+        "id_str": "14616719978",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -4554,6 +4658,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -4582,6 +4687,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 14367954463,
+        "id_str": "14367954463",
         "kilojoules": 188.1,
         "kudos_count": 0,
         "location_city": null,
@@ -4642,6 +4748,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -4670,6 +4777,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 14088785765,
+        "id_str": "14088785765",
         "kilojoules": 400.6,
         "kudos_count": 0,
         "location_city": null,
@@ -4730,6 +4838,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -4758,6 +4867,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 14068482558,
+        "id_str": "14068482558",
         "kilojoules": 319.3,
         "kudos_count": 0,
         "location_city": null,
@@ -4818,6 +4928,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -4846,6 +4957,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 14002376277,
+        "id_str": "14002376277",
         "kilojoules": 332.1,
         "kudos_count": 0,
         "location_city": null,
@@ -4906,6 +5018,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -4934,6 +5047,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13980538258,
+        "id_str": "13980538258",
         "kilojoules": 219.6,
         "kudos_count": 0,
         "location_city": null,
@@ -4994,6 +5108,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -5022,6 +5137,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13660052070,
+        "id_str": "13660052070",
         "kilojoules": 262.0,
         "kudos_count": 0,
         "location_city": null,
@@ -5082,6 +5198,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -5110,6 +5227,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13636086208,
+        "id_str": "13636086208",
         "kilojoules": 131.2,
         "kudos_count": 0,
         "location_city": null,
@@ -5170,6 +5288,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -5195,6 +5314,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13465704826,
+        "id_str": "13465704826",
         "kudos_count": 1,
         "location_city": null,
         "location_country": null,
@@ -5252,6 +5372,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -5277,6 +5398,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13216654067,
+        "id_str": "13216654067",
         "kilojoules": 99.3,
         "kudos_count": 0,
         "location_city": null,
@@ -5334,6 +5456,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -5358,6 +5481,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13215135668,
+        "id_str": "13215135668",
         "kilojoules": 128.2,
         "kudos_count": 0,
         "location_city": null,
@@ -5414,6 +5538,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -5438,6 +5563,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13215136285,
+        "id_str": "13215136285",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -5494,6 +5620,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -5518,6 +5645,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13215135487,
+        "id_str": "13215135487",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -5574,6 +5702,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -5601,6 +5730,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13215135520,
+        "id_str": "13215135520",
         "kilojoules": 253.9,
         "kudos_count": 0,
         "location_city": null,
@@ -5660,6 +5790,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -5684,6 +5815,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13215135900,
+        "id_str": "13215135900",
         "kilojoules": 220.2,
         "kudos_count": 0,
         "location_city": null,
@@ -5740,6 +5872,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -5767,6 +5900,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13215135555,
+        "id_str": "13215135555",
         "kilojoules": 342.7,
         "kudos_count": 0,
         "location_city": null,
@@ -5826,6 +5960,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -5853,6 +5988,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13215135707,
+        "id_str": "13215135707",
         "kilojoules": 510.5,
         "kudos_count": 0,
         "location_city": null,
@@ -5912,6 +6048,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -5937,6 +6074,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13261273809,
+        "id_str": "13261273809",
         "kilojoules": 52.3,
         "kudos_count": 0,
         "location_city": null,
@@ -5994,6 +6132,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -6022,6 +6161,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13261273843,
+        "id_str": "13261273843",
         "kilojoules": 377.4,
         "kudos_count": 0,
         "location_city": null,
@@ -6082,6 +6222,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -6110,6 +6251,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13261274573,
+        "id_str": "13261274573",
         "kilojoules": 298.5,
         "kudos_count": 0,
         "location_city": null,
@@ -6170,6 +6312,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -6198,6 +6341,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13261274445,
+        "id_str": "13261274445",
         "kilojoules": 265.9,
         "kudos_count": 0,
         "location_city": null,
@@ -6258,6 +6402,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -6286,6 +6431,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13261274456,
+        "id_str": "13261274456",
         "kilojoules": 424.8,
         "kudos_count": 0,
         "location_city": null,
@@ -6346,6 +6492,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -6369,6 +6516,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13261273677,
+        "id_str": "13261273677",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -6423,6 +6571,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -6448,6 +6597,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13261274468,
+        "id_str": "13261274468",
         "kilojoules": 215.1,
         "kudos_count": 0,
         "location_city": null,
@@ -6505,6 +6655,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -6530,6 +6681,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13261274537,
+        "id_str": "13261274537",
         "kilojoules": 91.1,
         "kudos_count": 0,
         "location_city": null,
@@ -6587,6 +6739,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -6612,6 +6765,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13261274534,
+        "id_str": "13261274534",
         "kilojoules": 179.1,
         "kudos_count": 0,
         "location_city": null,
@@ -6669,6 +6823,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -6692,6 +6847,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13261273816,
+        "id_str": "13261273816",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -6745,6 +6901,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -6768,6 +6925,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 13261273742,
+        "id_str": "13261273742",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -6821,6 +6979,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -6845,6 +7004,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 11307779883,
+        "id_str": "11307779883",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -6901,6 +7061,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -6925,6 +7086,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 11253730589,
+        "id_str": "11253730589",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -6981,6 +7143,7 @@
         "achievement_count": 5,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -7005,6 +7168,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 10868598269,
+        "id_str": "10868598269",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -7061,6 +7225,7 @@
         "achievement_count": 4,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -7085,6 +7250,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 10773508707,
+        "id_str": "10773508707",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -7141,6 +7307,7 @@
         "achievement_count": 6,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -7165,6 +7332,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 10639368565,
+        "id_str": "10639368565",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -7221,6 +7389,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -7245,6 +7414,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 10626638080,
+        "id_str": "10626638080",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -7303,6 +7473,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -7331,6 +7502,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18899027296,
+        "id_str": "18899027296",
         "kilojoules": 1109.3,
         "kudos_count": 0,
         "location_city": null,
@@ -7391,6 +7563,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -7417,6 +7590,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18892120195,
+        "id_str": "18892120195",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -7473,6 +7647,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -7499,6 +7674,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18883224251,
+        "id_str": "18883224251",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -7555,6 +7731,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -7580,6 +7757,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18883220547,
+        "id_str": "18883220547",
         "kilojoules": 70.3,
         "kudos_count": 0,
         "location_city": null,
@@ -7637,6 +7815,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -7662,6 +7841,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18883216247,
+        "id_str": "18883216247",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -7719,6 +7899,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -7747,6 +7928,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18730893098,
+        "id_str": "18730893098",
         "kilojoules": 252.6,
         "kudos_count": 0,
         "location_city": null,
@@ -7807,6 +7989,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -7829,6 +8012,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18662375337,
+        "id_str": "18662375337",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -7882,6 +8066,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -7907,6 +8092,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18550952726,
+        "id_str": "18550952726",
         "kilojoules": 107.9,
         "kudos_count": 0,
         "location_city": null,
@@ -7964,6 +8150,7 @@
         "achievement_count": 2,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -7992,6 +8179,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18302010848,
+        "id_str": "18302010848",
         "kilojoules": 213.2,
         "kudos_count": 0,
         "location_city": null,
@@ -8052,6 +8240,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -8080,6 +8269,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18027269265,
+        "id_str": "18027269265",
         "kilojoules": 500.5,
         "kudos_count": 0,
         "location_city": null,
@@ -8140,6 +8330,7 @@
         "achievement_count": 1,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -8168,6 +8359,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 18018918266,
+        "id_str": "18018918266",
         "kilojoules": 315.1,
         "kudos_count": 0,
         "location_city": null,
@@ -8228,6 +8420,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -8256,6 +8449,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17963965171,
+        "id_str": "17963965171",
         "kilojoules": 281.1,
         "kudos_count": 0,
         "location_city": null,
@@ -8316,6 +8510,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -8344,6 +8539,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17963957224,
+        "id_str": "17963957224",
         "kilojoules": 138.4,
         "kudos_count": 0,
         "location_city": null,
@@ -8404,6 +8600,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -8432,6 +8629,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17963950635,
+        "id_str": "17963950635",
         "kilojoules": 509.1,
         "kudos_count": 0,
         "location_city": null,
@@ -8492,6 +8690,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -8518,6 +8717,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17963943075,
+        "id_str": "17963943075",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -8574,6 +8774,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 9,
@@ -8602,6 +8803,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17642762974,
+        "id_str": "17642762974",
         "kilojoules": 509.4,
         "kudos_count": 0,
         "location_city": null,
@@ -8662,6 +8864,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -8690,6 +8893,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17618815623,
+        "id_str": "17618815623",
         "kilojoules": 526.3,
         "kudos_count": 1,
         "location_city": null,
@@ -8750,6 +8954,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -8778,6 +8983,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17560025283,
+        "id_str": "17560025283",
         "kilojoules": 501.1,
         "kudos_count": 1,
         "location_city": null,
@@ -8838,6 +9044,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -8864,6 +9071,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17491105008,
+        "id_str": "17491105008",
         "kudos_count": 0,
         "location_city": null,
         "location_country": null,
@@ -8920,6 +9128,7 @@
         "achievement_count": 0,
         "athlete": {
           "id": 130603137,
+          "id_str": "130603137",
           "resource_state": 1
         },
         "athlete_count": 1,
@@ -8948,6 +9157,7 @@
         "has_kudoed": false,
         "heartrate_opt_out": false,
         "id": 17491085333,
+        "id_str": "17491085333",
         "kilojoules": 510.3,
         "kudos_count": 1,
         "location_city": null,
@@ -8991,7 +9201,7 @@
     }
   ],
   "source": "strava",
-  "source_fetched_at": "2026-06-24T15:06:51.339320+00:00",
+  "source_fetched_at": "2026-06-24T20:07:00.338512+00:00",
   "map_center": {
     "latitude": 15.39143,
     "longitude": 73.87801
