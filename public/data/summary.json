@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-25T20:21:55.759303+00:00",
+  "generated_at": "2026-06-26T04:39:11.375619+00:00",
   "totals": {
     "activities": 86,
     "distance_km": 348.73,
@@ -241,7 +241,7 @@
         "id": 19063082530,
         "id_str": "19063082530",
         "kilojoules": 498.2,
-        "kudos_count": 0,
+        "kudos_count": 1,
         "location_city": null,
         "location_country": null,
         "location_state": null,
@@ -7594,7 +7594,7 @@
         "id": 19063082530,
         "id_str": "19063082530",
         "kilojoules": 498.2,
-        "kudos_count": 0,
+        "kudos_count": 1,
         "location_city": null,
         "location_country": null,
         "location_state": null,
@@ -9291,7 +9291,7 @@
     }
   ],
   "source": "strava",
-  "source_fetched_at": "2026-06-25T20:21:55.699404+00:00",
+  "source_fetched_at": "2026-06-26T04:39:11.313276+00:00",
   "map_center": {
     "latitude": 15.39143,
     "longitude": 73.87801
