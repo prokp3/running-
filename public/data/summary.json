@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-06-28T14:15:16.291738+00:00",
+  "generated_at": "2026-06-28T19:45:39.504425+00:00",
   "totals": {
-    "activities": 86,
-    "distance_km": 348.73,
+    "activities": 87,
+    "distance_km": 380.07,
     "run_distance_km": 249.44,
     "diet_coke_cans": 2044590,
-    "moving_hours": 49.59,
-    "elevation_m": 3952.3
+    "moving_hours": 51.49,
+    "elevation_m": 4151.3
   },
   "by_type": {
     "Hike": {
@@ -16,10 +16,10 @@
       "elevation_m": 1045.0
     },
     "Ride": {
-      "count": 4,
-      "distance_km": 30.92,
-      "moving_hours": 2.29,
-      "elevation_m": 214.0
+      "count": 5,
+      "distance_km": 62.26,
+      "moving_hours": 4.1899999999999995,
+      "elevation_m": 413.0
     },
     "Run": {
       "count": 60,
@@ -184,13 +184,97 @@
       "moving_hours": 1.4200000000000002
     },
     "2026-06": {
-      "count": 6,
-      "distance_km": 37.34,
-      "moving_hours": 7.15
+      "count": 7,
+      "distance_km": 68.68,
+      "moving_hours": 9.05
     }
   },
   "countries": {},
   "activities": [
+    {
+      "id": 19100346469,
+      "name": "Evening Ride",
+      "type": "Ride",
+      "start": "2026-06-28T19:08:18Z",
+      "distance_km": 31.34,
+      "moving_hours": 1.9,
+      "elevation_m": 199.0,
+      "location_city": null,
+      "location_state": null,
+      "location_country": null,
+      "average_speed": 4.577,
+      "max_speed": 9.02,
+      "average_heartrate": 144.5,
+      "max_heartrate": 176.0,
+      "raw": {
+        "achievement_count": 2,
+        "athlete": {
+          "id": 130603137,
+          "id_str": "130603137",
+          "resource_state": 1
+        },
+        "athlete_count": 1,
+        "average_heartrate": 144.5,
+        "average_speed": 4.577,
+        "comment_count": 0,
+        "commute": false,
+        "device_name": "Garmin Instinct 2 Solar",
+        "display_hide_heartrate_option": true,
+        "distance": 31342.3,
+        "elapsed_time": 7311,
+        "elev_high": 307.6,
+        "elev_low": 230.2,
+        "end_latlng": [
+          26.24538,
+          72.996656
+        ],
+        "external_id": "garmin_ping_591076247149",
+        "flagged": false,
+        "from_accepted_tag": false,
+        "gear_id": null,
+        "has_heartrate": true,
+        "has_kudoed": false,
+        "heartrate_opt_out": false,
+        "id": 19100346469,
+        "id_str": "19100346469",
+        "kudos_count": 0,
+        "location_city": null,
+        "location_country": null,
+        "location_state": null,
+        "manual": false,
+        "map": {
+          "id": "a19100346469",
+          "resource_state": 2,
+          "summary_polyline": "u`e_Dw|n|LoJrSg@rAQxAQlGK|J^`MB~Fr@~SFn@EjB\\pIIbAYh@s@n@k^jQuDjCgC`CoEpCGVcA|@yH~F_LnKeDpEgJ~N_@RcAToG@UJQA}@q@y@iAcBoEc@y@[a@QI}@Ec@J_Ah@{Bx@{AZmD?uO}@{KqAwFc@wAUgCy@q@@kB|@yAJe@CyGcB{EcBiDoBq@g@IQGq@f@aFLUj@WP?RJPd@TEFgA[Ss@HIOGs@OIc@LaAEQa@Mi@YeF_@yAAw@Dq@IoEIe@OSYMcAC}CXm@?{A_@yAqAq@_BcCwCy@y@cBcDsC{Dg@SeGeAgE_AqCn@WPW^aAvG_@`AwBfEuEvF[r@k@dBc@\\q@AsAWSMa@kAuBo@QMS{@U[eAAyDa@m@ImAc@SYIa@@Wv@y@L]I]a@[m@M{AX_CPi@GWQY_@A_@HMpBk@NUBg@Ki@]WkAA_ANcAh@m@d@w@jAuB~Ao@Dk@z@g@^In@Y`EkAt@gElAi@Do@OsBcAm@{@OEy@PO^e@fD@XTv@Ff@Eh@_@h@aBpASXi@dCc@\\sAn@kJNmCp@eCYmEY}@BkCb@cGPmAYwBy@oAs@YYS_Ak@iFK_@S[y@KmFn@_KViLhCgAPkJr@c@HOR]@_@WMYeBmBgAcBkI}R_C_I_DiGq@cBk@iBoHqX}EyR}AaPk@cFoBsMIyATyBl@aDfAmERuBn@wBXcBbAmEnAwBzAwBl@oApD}I|@aBf@_@pKsDt@MbCJpAIrAo@zEeBpFeBXCh@pAhAlAjAv@jA\\fGr@xEt@|@RtDbBnFvDbIdFvPrMv@Zd@FPEnUuMz@Sf@HrAh@pHtD`GxBxKdFfN`FnBd@j@XnIxBvSdHtDbA~BZ~HBpDIVMRJd@?nJWbIWxFc@dMqBfHy@z@c@d@y@pA}FNeBGsAu@qFwBiKq@wCc@cASy@Di@nDmFpDcGLc@h@e@PGTH|@x@bEzClMlKt@z@`GpEjKzIlIvGR@`AaBzMg_@vEeNnC}G@[{@_AWcABy@J_@T_@d@]h@MhAHZP^b@Th@H`BZ\\f_@jQzB`Ah@JJInBmF|EqN~AoDjD{KxIaVb@}ANQz@Il@?l\\dChC\\~SzAdCd@z@DJLIp@kDzI_C~GmBpECV[\\m@tA{A|EgBpEALT\\rD|AAVw@xCuBrG"
+        },
+        "max_heartrate": 176.0,
+        "max_speed": 9.02,
+        "moving_time": 6848,
+        "name": "Evening Ride",
+        "photo_count": 0,
+        "pr_count": 1,
+        "private": false,
+        "resource_state": 2,
+        "sport_type": "Ride",
+        "start_date": "2026-06-28T13:38:18Z",
+        "start_date_local": "2026-06-28T19:08:18Z",
+        "start_latlng": [
+          26.243659,
+          72.993527
+        ],
+        "timezone": "(GMT+05:30) Asia/Kolkata",
+        "total_elevation_gain": 199.0,
+        "total_photo_count": 0,
+        "trainer": false,
+        "type": "Ride",
+        "upload_id": 20215621925,
+        "upload_id_str": "20215621925",
+        "utc_offset": 19800.0,
+        "visibility": "followers_only",
+        "workout_type": null
+      },
+      "url": "https://www.strava.com/activities/19100346469"
+    },
     {
       "id": 19063082530,
       "name": "Evening Run",
@@ -7545,6 +7629,90 @@
   ],
   "recent": [
     {
+      "id": 19100346469,
+      "name": "Evening Ride",
+      "type": "Ride",
+      "start": "2026-06-28T19:08:18Z",
+      "distance_km": 31.34,
+      "moving_hours": 1.9,
+      "elevation_m": 199.0,
+      "location_city": null,
+      "location_state": null,
+      "location_country": null,
+      "average_speed": 4.577,
+      "max_speed": 9.02,
+      "average_heartrate": 144.5,
+      "max_heartrate": 176.0,
+      "raw": {
+        "achievement_count": 2,
+        "athlete": {
+          "id": 130603137,
+          "id_str": "130603137",
+          "resource_state": 1
+        },
+        "athlete_count": 1,
+        "average_heartrate": 144.5,
+        "average_speed": 4.577,
+        "comment_count": 0,
+        "commute": false,
+        "device_name": "Garmin Instinct 2 Solar",
+        "display_hide_heartrate_option": true,
+        "distance": 31342.3,
+        "elapsed_time": 7311,
+        "elev_high": 307.6,
+        "elev_low": 230.2,
+        "end_latlng": [
+          26.24538,
+          72.996656
+        ],
+        "external_id": "garmin_ping_591076247149",
+        "flagged": false,
+        "from_accepted_tag": false,
+        "gear_id": null,
+        "has_heartrate": true,
+        "has_kudoed": false,
+        "heartrate_opt_out": false,
+        "id": 19100346469,
+        "id_str": "19100346469",
+        "kudos_count": 0,
+        "location_city": null,
+        "location_country": null,
+        "location_state": null,
+        "manual": false,
+        "map": {
+          "id": "a19100346469",
+          "resource_state": 2,
+          "summary_polyline": "u`e_Dw|n|LoJrSg@rAQxAQlGK|J^`MB~Fr@~SFn@EjB\\pIIbAYh@s@n@k^jQuDjCgC`CoEpCGVcA|@yH~F_LnKeDpEgJ~N_@RcAToG@UJQA}@q@y@iAcBoEc@y@[a@QI}@Ec@J_Ah@{Bx@{AZmD?uO}@{KqAwFc@wAUgCy@q@@kB|@yAJe@CyGcB{EcBiDoBq@g@IQGq@f@aFLUj@WP?RJPd@TEFgA[Ss@HIOGs@OIc@LaAEQa@Mi@YeF_@yAAw@Dq@IoEIe@OSYMcAC}CXm@?{A_@yAqAq@_BcCwCy@y@cBcDsC{Dg@SeGeAgE_AqCn@WPW^aAvG_@`AwBfEuEvF[r@k@dBc@\\q@AsAWSMa@kAuBo@QMS{@U[eAAyDa@m@ImAc@SYIa@@Wv@y@L]I]a@[m@M{AX_CPi@GWQY_@A_@HMpBk@NUBg@Ki@]WkAA_ANcAh@m@d@w@jAuB~Ao@Dk@z@g@^In@Y`EkAt@gElAi@Do@OsBcAm@{@OEy@PO^e@fD@XTv@Ff@Eh@_@h@aBpASXi@dCc@\\sAn@kJNmCp@eCYmEY}@BkCb@cGPmAYwBy@oAs@YYS_Ak@iFK_@S[y@KmFn@_KViLhCgAPkJr@c@HOR]@_@WMYeBmBgAcBkI}R_C_I_DiGq@cBk@iBoHqX}EyR}AaPk@cFoBsMIyATyBl@aDfAmERuBn@wBXcBbAmEnAwBzAwBl@oApD}I|@aBf@_@pKsDt@MbCJpAIrAo@zEeBpFeBXCh@pAhAlAjAv@jA\\fGr@xEt@|@RtDbBnFvDbIdFvPrMv@Zd@FPEnUuMz@Sf@HrAh@pHtD`GxBxKdFfN`FnBd@j@XnIxBvSdHtDbA~BZ~HBpDIVMRJd@?nJWbIWxFc@dMqBfHy@z@c@d@y@pA}FNeBGsAu@qFwBiKq@wCc@cASy@Di@nDmFpDcGLc@h@e@PGTH|@x@bEzClMlKt@z@`GpEjKzIlIvGR@`AaBzMg_@vEeNnC}G@[{@_AWcABy@J_@T_@d@]h@MhAHZP^b@Th@H`BZ\\f_@jQzB`Ah@JJInBmF|EqN~AoDjD{KxIaVb@}ANQz@Il@?l\\dChC\\~SzAdCd@z@DJLIp@kDzI_C~GmBpECV[\\m@tA{A|EgBpEALT\\rD|AAVw@xCuBrG"
+        },
+        "max_heartrate": 176.0,
+        "max_speed": 9.02,
+        "moving_time": 6848,
+        "name": "Evening Ride",
+        "photo_count": 0,
+        "pr_count": 1,
+        "private": false,
+        "resource_state": 2,
+        "sport_type": "Ride",
+        "start_date": "2026-06-28T13:38:18Z",
+        "start_date_local": "2026-06-28T19:08:18Z",
+        "start_latlng": [
+          26.243659,
+          72.993527
+        ],
+        "timezone": "(GMT+05:30) Asia/Kolkata",
+        "total_elevation_gain": 199.0,
+        "total_photo_count": 0,
+        "trainer": false,
+        "type": "Ride",
+        "upload_id": 20215621925,
+        "upload_id_str": "20215621925",
+        "utc_offset": 19800.0,
+        "visibility": "followers_only",
+        "workout_type": null
+      },
+      "url": "https://www.strava.com/activities/19100346469"
+    },
+    {
       "id": 19063082530,
       "name": "Evening Run",
       "type": "Run",
@@ -9204,94 +9372,10 @@
         "workout_type": null
       },
       "url": "https://www.strava.com/activities/17560025283"
-    },
-    {
-      "id": 17491105008,
-      "name": "Morning Walk",
-      "type": "Walk",
-      "start": "2026-02-23T07:40:51Z",
-      "distance_km": 12.25,
-      "moving_hours": 2.65,
-      "elevation_m": 139.0,
-      "location_city": null,
-      "location_state": null,
-      "location_country": null,
-      "average_speed": 1.286,
-      "max_speed": 6.667,
-      "average_heartrate": 94.6,
-      "max_heartrate": 134.0,
-      "raw": {
-        "achievement_count": 0,
-        "athlete": {
-          "id": 130603137,
-          "id_str": "130603137",
-          "resource_state": 1
-        },
-        "athlete_count": 1,
-        "average_cadence": 53.3,
-        "average_heartrate": 94.6,
-        "average_speed": 1.286,
-        "comment_count": 0,
-        "commute": false,
-        "device_name": "Garmin Instinct 2 Solar",
-        "display_hide_heartrate_option": true,
-        "distance": 12246.6,
-        "elapsed_time": 14109,
-        "elev_high": 79.0,
-        "elev_low": -10.6,
-        "end_latlng": [
-          15.369811,
-          73.836085
-        ],
-        "external_id": "garmin_ping_538624935666",
-        "flagged": false,
-        "from_accepted_tag": false,
-        "gear_id": null,
-        "has_heartrate": true,
-        "has_kudoed": false,
-        "heartrate_opt_out": false,
-        "id": 17491105008,
-        "id_str": "17491105008",
-        "kudos_count": 0,
-        "location_city": null,
-        "location_country": null,
-        "location_state": null,
-        "manual": false,
-        "map": {
-          "id": "a17491105008",
-          "resource_state": 2,
-          "summary_polyline": "us||A{~{aMTX?N@B`A^DH\\Nv@LjAJP?ZM^ARDVNHLF~AJrA@`@BNHrBTbB@d@Fn@ATXpCC`AHxBNh@RfDH~CAjCG`@KxB?TKf@Cn@Kv@Af@MpAU~Am@jCq@~AYlAGHQp@b@VFNCNE?Qt@IdAKhB@h@Ep@K~DSfECjBItAI`DCNE~AKn@SbAg@nAkA|AeAbAMR{@v@aBjBSXYj@Op@@TEXBtBG|@BX?p@C~A@TPRj@J`C~@vA`@LJF?n@Vn@BJL^Pb@n@@FAFGJFt@Px@NPNh@FHJ?`B{@`Aa@zBc@|HoAj@CbCFvAChD]d@Gv@A`@@dAClCw@nAOvA@f@DNHL?XJL?z@Zj@Bb@MXEh@ShA_AbBy@xBwAxAy@lAStBQhA]CSKWHGC@?De@wA?]L[NSXQ`A{@dBkALClAeAp@cAb@_@\\c@N]v@gAb@iAPQd@}@`@aBAQPk@B_@j@}BFk@Nc@HKFQROLQN]FE`@m@Te@Ji@TuCPkAN[Ho@`@Ub@BRCRDFABGCE@CJHP@~@AFGJOFMCCBEHBE@?DBIG@uFfUAVDd@Kf@U^K\\GZ@d@Kh@Ob@GJUp@O\\QRWhA_@|@Il@KpBIHEN[^aA|@q@x@o@f@KVM`@GJo@b@YJm@L}AN_@J?BiAHUHKPa@IYAs@N[@q@P_A@UBMFIAk@RSRWFWTSFmBxAsAl@gBpAU@OLi@L]@YAmBq@c@IoAGiAF_APc@NsAXIFECe@D_AEm@@EDv@Lf@LfAf@IA`@NrA~@x@dAZTn@\\NN|@p@`@THMBQ@?ECBAACDPCJKJBFt@h@~@|@n@f@p@^p@l@F@AEAD\\[[TFB?DT`@BZCz@Dr@CbA@n@EVAj@BLG`@CxADjAXrAx@xCt@bE@RLhB?d@Dd@DzAj@~AZr@Zd@^z@v@pANNrAj@bCx@jAB~BCfBGn@@f@BdB^AOCA@HB?EA@A?GGECNHPr@f@ZNtD`@r@Xz@l@l@VX?r@H^JFL@XG\\Yl@W~@]p@EZIPEb@Hb@Zd@`@Zb@d@VbA`@dARZBVJ^@RTfA^f@LHRBf@A@FBAUQXXCA@E?BYSP@RUfAy@FEJDBIIDGNWAIH"
-        },
-        "max_heartrate": 134.0,
-        "max_speed": 6.667,
-        "moving_time": 9522,
-        "name": "Morning Walk",
-        "photo_count": 0,
-        "pr_count": 0,
-        "private": false,
-        "resource_state": 2,
-        "sport_type": "Walk",
-        "start_date": "2026-02-23T02:10:51Z",
-        "start_date_local": "2026-02-23T07:40:51Z",
-        "start_latlng": [
-          15.389431,
-          73.878496
-        ],
-        "timezone": "(GMT+05:30) Asia/Kolkata",
-        "total_elevation_gain": 139.0,
-        "total_photo_count": 0,
-        "trainer": false,
-        "type": "Walk",
-        "upload_id": 18588457563,
-        "upload_id_str": "18588457563",
-        "utc_offset": 19800.0,
-        "visibility": "followers_only"
-      },
-      "url": "https://www.strava.com/activities/17491105008"
     }
   ],
   "source": "strava",
-  "source_fetched_at": "2026-06-28T14:15:16.232201+00:00",
+  "source_fetched_at": "2026-06-28T19:45:39.443395+00:00",
   "map_center": {
     "latitude": 15.39143,
     "longitude": 73.87801
